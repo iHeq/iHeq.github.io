@@ -220,3 +220,49 @@ section.main img:not(:hover) {
     transition: transform 0.3s ease-in-out;
     transform: scale(1);
   }
+
+
+
+  .tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Tooltip text */
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 60px;
+    left: -20%;
+    top: 75%;
+    background-color: rgb(166, 168, 184);
+    color: #ffffff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    font-size: 12px;
+   
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+  }
+  
+  .tooltip .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    bottom: 100%;  /* At the top of the tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent rgb(166, 168, 184) transparent;
+  }
+
+  /* Show the tooltip text when you mouse over the tooltip container */
+.tooltip .tooltiptext {
+    visibility: visible;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+}
+.tooltip:hover .tooltiptext {
+    opacity: 1;
+}
