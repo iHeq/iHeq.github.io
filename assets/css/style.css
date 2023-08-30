@@ -201,3 +201,23 @@ section.main svg:hover {
   svg:hover path {
     fill: rgb(255, 255, 255) !important;
   }
+
+.header_logo:hover {
+    transition: transform 0.3s ease-in-out;
+    transform: scale(1.1);
+  }
+
+.header_logo:not(:hover) {
+    transition: transform 0.3s ease-in-out;
+    transform: scale(1);
+  }
+
+section.main img:hover {
+    transition: transform 0.3s ease-in-out;
+    transform: scale(1.1);
+  }
+section.main img:not(:hover) {
+    transition: transform 0.3s ease-in-out;
+    transform: scale(1);
+  }
+  
