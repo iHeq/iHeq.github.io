@@ -151,6 +151,7 @@ section.main ul li a:hover {
     color: #fff;
 }
 
+
 @keyframes typewriter {
     from {
         width: 0;
@@ -193,8 +194,10 @@ section.main svg:hover {
     cursor: pointer;
   }
 
-section.main svg:hover {
-    transition: filter 1s;
-    filter: invert(1);
+  svg path {
+    fill: rgb(166, 168, 184);
+    transition: fill 0.2s ease-in-out;
   }
-  
+  svg:hover path {
+    fill: rgb(255, 255, 255) !important;
+  }
