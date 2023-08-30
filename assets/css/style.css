@@ -179,16 +179,16 @@ section.main ul li a:hover {
     }
 }
 
-svg:hover {
+section.main svg:hover {
     cursor: pointer;
   }
 
-svg:hover {
+section.main svg:hover {
     transition: transform 1s ease-in-out;
     transform: scale(1.1);
   }
 
-svg:hover {
+section.main svg:hover {
     transition: filter 1s;
     filter: invert(1);
   }
