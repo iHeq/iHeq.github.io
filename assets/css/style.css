@@ -102,8 +102,8 @@ section.main {
 }
 
 section.main img {
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
     border-radius: 100%;
     object-fit: cover;
     border: 10px solid #21222b93;
@@ -113,7 +113,7 @@ section.main img {
 
 section.main span {
     color: #fffffe;
-    font-size: 30px;
+    font-size: 40px;
     font-weight: bold;
 }
 
@@ -124,7 +124,7 @@ section.main p {
     white-space: nowrap;
     overflow: hidden;
     color: #94a1b2;
-    font-size: 13px;
+    font-size: 18px;
     animation: typewriter 4s steps(44) 1s 1 normal both, blinkTextCursor 530ms steps(44) infinite normal;
 }
 
@@ -141,7 +141,7 @@ section.main ul li a {
     display: flex;
     text-decoration: none;
     margin: 20px 5px;
-    font-size: 25px;
+    font-size: 40px;
     padding: 5px;
     transition: 0.2s all;
 }
@@ -268,3 +268,73 @@ section.main img:not(:hover) {
 .tooltip:hover .tooltiptext {
     opacity: 1;
 }
+
+/*about me*/
+
+section.work {
+    margin-top: 150px;
+    text-align: center;
+}
+
+.spantitle {
+    color: #fffffe;
+    font-size: 30px;
+    font-weight: bold; 
+    animation: fadeInUp .8s; 
+           
+}
+
+.span1 {
+    color: #fffffe;
+    font-size: 22px;
+    font-weight: bold; 
+
+}
+
+section.work p {
+    color: rgb(166, 168, 184);
+    font-size: 15px;
+    font-weight: bold; 
+    text-align: left;
+}
+
+.parent {
+    padding: 2rem 2rem;
+    text-align: center;
+    display: flex; 
+	justify-content: space-between;
+  }
+
+.child {
+    size: fixed;
+    width: 30px;
+    height: 300px;
+    border-radius: 10px;
+    text-align: center;
+    display: inline-block;
+    border: 1px solid rgb(166, 168, 184);
+    padding: 1em;
+    vertical-align: middle;
+    background: transparent;
+    animation: fadeInUp .8s;   
+    flex: 1;  
+    margin: 0 1rem;
+    overflow: auto;
+    
+  } 
+
+.child2 {
+    size: fixed;
+    width: 20%;
+    height: 100%;
+    border-radius: 10px;
+    text-align: center;
+    display: inline-block;
+    border: 2px solid rgba(255, 255, 255);
+    padding: 1rem 1rem;
+    vertical-align: middle;
+    background: transparent;
+    animation: fadeInUp .8s;   
+    flex: 1; 
+    margin: 0 1rem; 
+  } 
