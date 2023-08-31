@@ -320,21 +320,4 @@ section.work p {
     flex: 1;  
     margin: 0 1rem;
     overflow: auto;
-    
-  } 
-
-.child2 {
-    size: fixed;
-    width: 20%;
-    height: 100%;
-    border-radius: 10px;
-    text-align: center;
-    display: inline-block;
-    border: 2px solid rgba(255, 255, 255);
-    padding: 1rem 1rem;
-    vertical-align: middle;
-    background: transparent;
-    animation: fadeInUp .8s;   
-    flex: 1; 
-    margin: 0 1rem; 
-  } 
+ } 
