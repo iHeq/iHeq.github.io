@@ -234,8 +234,8 @@ section.main img:not(:hover) {
   .tooltip .tooltiptext {
     visibility: hidden;
     width: 60px;
-    left: -20%;
-    top: 75%;
+    left: -5%;
+    top: 80%;
     background-color: rgb(166, 168, 184);
     color: #ffffff;
     text-align: center;
