@@ -15,6 +15,7 @@
 
     <!-- Javascript -->
     
+    
     <!-- Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous">
 
@@ -31,14 +32,36 @@
             </div>
             <div class="header_links">
                 <ul class="nav_links">
-                    <li class="nav_link"><a href="#">Home</a></li>
+                    <!--<li class="nav_link"><a href="#">Home</a></li>-->
+
+                    
+                    <div class="count-display">
+                        <!-- The count will be displayed here -->
+                     </div>
+
+                     <script>
+                        window.onload = function() {
+                           let count;
+                           if (localStorage.getItem('viewCount') === null) {
+                             count = 1;
+                           } else {
+                             count = parseInt(localStorage.getItem('viewCount')) + 1;
+                           }
+                           localStorage.setItem('viewCount', count);
+                       
+                           // Display the count on the webpage
+                           document.querySelector('.count-display').textContent = count;
+                        };
+                       </script>
+
+
                     <!--<li class="nav_link"><a href="#work">work</a></li> -->
                     <!-- <li class="nav_link"><a href="#">Repos</a></li> -->
                 </ul>
             </div>
         </nav>
     </header>
-    
+
     <section class="main">
         <img src="assets/imgs/profilepicture.png" alt="" srcset="">
         <span>Jiqu</span>
