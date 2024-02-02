@@ -125,7 +125,7 @@ section.main p {
     overflow: hidden;
     color: #94a1b2;
     font-size: 18px;
-    animation: typewriter 4s steps(44) 1s 1 normal both, blinkTextCursor 530ms steps(44) infinite normal;
+    animation: typewriter 4s steps(50, end) 1s 1 normal both, blinkTextCursor 430ms steps(50, end) infinite normal;
 }
 
 section.main ul {
@@ -159,7 +159,7 @@ section.main ul li a:hover {
         width: 0;
     }
     to {
-        width: 20.5em;
+        width: 16.5em;
     }
 }
 
