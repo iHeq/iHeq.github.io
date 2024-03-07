@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://mc-heads.net/avatar/bruteforce">
+    
+    <!-- Title -->
+    <title>🧊 ・ ui</title>
+
+    <!-- Css -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Javascript -->
+    
+    
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous">
+
+    <video autoplay loop muted>
+        <source src="./assets/vid/background.mp4" type="video/mp4">
+    </video>
+</head>
+<body>
+    
+    <header>
+        <nav>
+            <div class="header_logo">
+                <img src="assets/imgs/headerimg.jpg" alt="" srcset="">
+            </div>
+            <div class="header_links">
+                <ul class="nav_links">
+                    <!--<li class="nav_link"><a href="#">Home</a></li>-->
+
+                    
+                    <div class="count-display">
+                        <!-- The count will be displayed here -->
+                     </div>
+
+                     <script>
+                        window.onload = function() {
+                           let count;
+                           if (localStorage.getItem('viewCount') === null) {
+                             count = 1;
+                           } else {
+                             count = parseInt(localStorage.getItem('viewCount')) + 1;
+                           }
+                           localStorage.setItem('viewCount', count);
+                       
+                           // Display the count on the webpage
+                           document.querySelector('.count-display').textContent = count;
+                        };
+                       </script>
+
+
+                    <!--<li class="nav_link"><a href="#work">work</a></li> -->
+                    <!-- <li class="nav_link"><a href="#">Repos</a></li> -->
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="main">
+        <img src="assets/imgs/profilepicture.png" alt="" srcset="">
+        <span>ui</span>
+        <p>Development and other fun stuff.</p>
+        <ul>
+            <li><a target="_blank" href="https://github.com/iHeq"><i class="fab fa-github"></i></a></li>
+            <li><a target="_blank" href="https://www.youtube.com/@lwlw"><i class="fab fa-youtube"></i></a></li>
+            <li><a target="_blank" href="https://t.me/leakufy"><i class="fab fa-telegram"></i></a></li>
+            <svg viewBox="-8 -8 16 16" class="h-7 w-7 text-[#020101] duration-300 hover:scale-110 hover:text-[#020101]" shape-rendering="crispEdges" width="32" height="32" onclick="window.open('https://namemc.com/bruteforce', '_blank')">
+            <path d="M-5-5L+3-5L+3-3L+5-3L+5+5L+3+5L+3-3L-3-3L-3+5L-5+5" style="fill: rgb(166, 168, 184);">
+            </svg>
+
+            <div class="tooltip"><li><a target="_blank" title="l77l"><i class="fab fa-discord"></i></a></li>
+                <span class="tooltiptext">l77l</span>
+            </div>
+
+        </ul>
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5K9tfeoiztw94dyWzF39jq?utm_source=generator&theme=0" width="350" height="125" frameBorder="0" allowfullscreen="false" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </section>
+
+    <section class="work">
+        <span class="spantitle">My Projects</span>
+    <div class='parent'>
+        <div class='child'><span class="span1">This Website</span><p>The website you are currently on is a project of mine. <br></br>It took about two days to make and is opensource for everyone to download on my Git (please credit me in the footer when using). The site is fully written in HTML, CSS and JavaScript. <br></br>The blueprint for this website was made by “kanekiweb” on GitHub. </p></div>
+        <div class='child'><span class="span1">Duels Tracker</span><p>In the Summer of 2023 I’ve created a so called “Tracker” which, in my case, tracks a players duel stats in a specific gamemode utilizing the public Hypixel API. The program broadcasts the stats of the given player in a Discord server. <br></br>The program can be also used to terminate the Minecraft process while botting, simply by clicking a button in the Discord message sent by the program. <br></br>The project is currently private and may or may not be released soon.</p></div>
+      </div>
+    </section>
+
+</body>
+</html> 
