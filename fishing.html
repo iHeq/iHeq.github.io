@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="style.css">
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jacquard+24&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400..900&family=Oswald&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="container">
+        <div id="title" class="jacquard-24-regular">Main Lobby Fishing Stats</div>
+        
+
+        <div id="content" class="maven-pro">Fishes <dev id="fish-count"></div>
+        <div id="content" class="maven-pro">Treasure <dev id="treasures"></div>
+        <div id="content" class="maven-pro">Junk <dev id="junk"></div>
+
+            <input type="text" id="username" placeholder="Enter username" class="maven-pro">
+            <button id="submit" class="maven-pro">Serach</button>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script>
+                $(document).ready(function() {
+                    const apiKey = "b3909a29-acb5-4910-a753-f3b18ad7bb41";
+    
+                    $("#submit").click(function() {
+                        const username = $("#username").val();
+                        const apiUrl = `https://playerdb.co/api/player/minecraft/${username}`;
+                        $.getJSON(apiUrl, function(data) {
+                            const uuid = data.data.player.id;
+                            const fishingApiUrl = `https://api.hypixel.net/player?key=${apiKey}&uuid=${uuid}`;
+                            fetchFishingStats(fishingApiUrl);
+                        });
+                    });
+    
+                    function fetchFishingStats(apiUrl) {
+                        $.getJSON(apiUrl, function(data) {
+                            if (data.player.playername) {
+                                const fishValue = data.player.playername;
+                                $("#title").text(fishValue);
+                            } else {
+                                $("#title").text("N/A");
+                            }
+    
+                            if (data.player.stats.MainLobby.fishing.stats.permanent.water.fish) {
+                                const fishCount = data.player.stats.MainLobby.fishing.stats.permanent.water.fish;
+                                $("#fish-count").text(fishCount);
+                            } else {
+                                $("#fish-count").text("N/A");
+                            }
+    
+                            if (data.player.stats.MainLobby.fishing.stats.permanent.water.treasure) {
+                                const treasures = data.player.stats.MainLobby.fishing.stats.permanent.water.treasure;
+                                $("#treasures").text(treasures);
+                            } else {
+                                $("#treasures").text("N/A");
+                            }
+    
+                            if (data.player.stats.MainLobby.fishing.stats.permanent.water.junk) {
+                                const junk = data.player.stats.MainLobby.fishing.stats.permanent.water.junk;
+                                $("#junk").text(junk);
+                            } else {
+                                $("#junk").text("N/A");
+                            }
+                        });
+                    }
+                });
+            </script>
+            <p class="oswald">Currently only shows fish catches from <span id="water-type">water</span>!</p>
+    </div>
+
+  </body>
+  <footer class="footer">
+    <p class="oswald">&hearts; by ui </p>
+  </footer>
+</html>
