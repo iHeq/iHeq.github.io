@@ -15,9 +15,9 @@
         <div id="title" class="jacquard-24-regular">Main Lobby Fishing Stats</div>
         
 
-        <div id="content" class="maven-pro">Fishes <dev id="fish-count"></div>
-        <div id="content" class="maven-pro">Treasure <dev id="treasures"></div>
-        <div id="content" class="maven-pro">Junk <dev id="junk"></div>
+        <div id="content" class="maven-pro">Fishes <dev id="fish-count-water" class="fish-count-water"></dev> <dev id="fish-count-lava" class="fish-count-lava"></dev> <dev id="fish-count-ice" class="fish-count-ice"></dev></div>
+        <div id="content" class="maven-pro">Treasures <dev id="treasures-water" class="treasures-water"></dev> <dev id="treasures-lava" class="treasures-lava"></dev> <dev id="treasures-ice" class="treasures-ice"></dev></div>
+        <div id="content" class="maven-pro">Junk <dev id="junk-water" class="junk-water"></dev> <dev id="junk-lava" class="junk-lava"></dev> <dev id="junk-ice" class="junk-ice"></dev></div>
 
             <input type="text" id="username" placeholder="Enter username" class="maven-pro">
             <button id="submit" class="maven-pro">Serach</button>
@@ -39,37 +39,80 @@
                     function fetchFishingStats(apiUrl) {
                         $.getJSON(apiUrl, function(data) {
                             if (data.player.playername) {
-                                const fishValue = data.player.playername;
+                                var fishValue = data.player.playername;
                                 $("#title").text(fishValue);
                             } else {
-                                $("#title").text("N/A");
+                                $("#title").text(0);
                             }
     
-                            if (data.player.stats.MainLobby.fishing.stats.permanent.water.fish) {
-                                const fishCount = data.player.stats.MainLobby.fishing.stats.permanent.water.fish;
-                                $("#fish-count").text(fishCount);
+                            if (data.player.stats.MainLobby.fishing.stats.permanent.hasOwnProperty("water")) {
+                                var fishCountWater = data.player.stats.MainLobby.fishing.stats.permanent.water.fish;
+                                $("#fish-count-water").text(fishCountWater);
                             } else {
-                                $("#fish-count").text("N/A");
+                                $("#fish-count-water").text(0);
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.stats.permanent.hasOwnProperty("lava")) {
+                                var fishCountLava = data.player.stats.MainLobby.fishing.stats.permanent.lava.fish;
+                                $("#fish-count-lava").text(fishCountLava || "0");
+                            } else {
+                                $("#fish-count-lava").text("0");
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.stats.permanent.hasOwnProperty("ice")) {
+                                var fishCountIce = data.player.stats.MainLobby.fishing.stats.permanent.ice.fish;
+                                $("#fish-count-ice").text(fishCountIce || "0");
+                            } else {
+                                $("#fish-count-ice").text("0");
                             }
     
-                            if (data.player.stats.MainLobby.fishing.stats.permanent.water.treasure) {
-                                const treasures = data.player.stats.MainLobby.fishing.stats.permanent.water.treasure;
-                                $("#treasures").text(treasures);
+                            if (data.player.stats.MainLobby.fishing.stats.permanent.hasOwnProperty("water")) {
+                                var treasuresWater = data.player.stats.MainLobby.fishing.stats.permanent.water.treasure;
+                                $("#treasures-water").text(treasuresWater);
                             } else {
-                                $("#treasures").text("N/A");
+                                $("#treasures-water").text(0);
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.stats.permanent.hasOwnProperty("lava")) {
+                                var treasuresLava = data.player.stats.MainLobby.fishing.stats.permanent.lava.treasure;
+                                $("#treasures-lava").text(treasuresLava);
+                            } else {
+                                $("#treasures-lava").text(0);
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.stats.permanent.hasOwnProperty("ice")) {
+                                var treasuresIce = data.player.stats.MainLobby.fishing.stats.permanent.ice.treasure;
+                                $("#treasures-ice").text(treasuresIce);
+                            } else {
+                                $("#treasures-ice").text(0);
                             }
     
-                            if (data.player.stats.MainLobby.fishing.stats.permanent.water.junk) {
-                                const junk = data.player.stats.MainLobby.fishing.stats.permanent.water.junk;
-                                $("#junk").text(junk);
+                            if (data.player.stats.MainLobby.fishing.stats.permanent.hasOwnProperty("water")) {
+                                var junkWater = data.player.stats.MainLobby.fishing.stats.permanent.water.junk;
+                                $("#junk-water").text(junkWater);
                             } else {
-                                $("#junk").text("N/A");
+                                $("#junk-water").text(0);
                             }
+
+                            if (data.player.stats.MainLobby.fishing.stats.permanent.hasOwnProperty("lava")) {
+                                var junkLava = data.player.stats.MainLobby.fishing.stats.permanent.lava.junk;
+                                $("#junk-lava").text(junkLava);
+                            } else {
+                                $("#junk-lava").text(0);
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.stats.permanent.hasOwnProperty("ice")) {
+                                var junkIce = data.player.stats.MainLobby.fishing.stats.permanent.ice.junk;
+                                $("#junk-ice").text(junkIce);
+                            } else {
+                                $("#junk-ice").text(0);
+                            }
+                            
                         });
                     }
                 });
             </script>
-            <p class="oswald">Currently only shows fish catches from <span id="water-type">water</span>!</p>
+            <p class="oswald">Last Update: Added different <span id="water-type">environments</span>!</p>
     </div>
 
   </body>

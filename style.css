@@ -38,31 +38,82 @@ body {
   font-size: 18px;
   margin-bottom: 10px;
 }
+/* FISH COUNTERS */
 
-#fish-count {
+#fish-count-water {
   font-weight: normal;
   font-size: 18px;
   margin-bottom: 10px;
+  color: transparent;
 }
 
-#treasures {
+.fish-count-lava {
   font-weight: normal;
   font-size: 18px;
   margin-bottom: 10px;
+  color: red;
 }
 
-#junk {
+.fish-count-ice {
   font-weight: normal;
   font-size: 18px;
   margin-bottom: 10px;
+  color: rgb(0, 187, 255);
 }
 
+#treasures-water {
+  font-weight: normal;
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: blue;
+}
+
+.treasures-lava {
+  font-weight: normal;
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: red;
+}
+
+.treasures-ice {
+  font-weight: normal;
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: rgb(0, 187, 255);
+}
+
+#junk-water {
+  font-weight: normal;
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: blue;
+}
+
+.junk-lava {
+  font-weight: normal;
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: red;
+}
+
+.junk-ice {
+  font-weight: normal;
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: rgb(0, 187, 255);
+}
+
+/* OTHER THINGS*/
 #container p {
   align-self: center;
 }
 
-#container #water-type {
-  color: #0000FF; /* Change this to the desired blue color */
+
+#water-type {
+  background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent; /* add this to make the text color transparent */
 }
 
 .footer {
