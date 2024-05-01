@@ -12,9 +12,9 @@
   </head>
   <body>
     <div id="container">
-    
+        
         <div id="title" class="jacquard-24-regular">Main Lobby Fishing Stats</div>
-        <p id="rank"></p>
+        <p id="rank"></p><img id="skin" style="display: none;">
 
         <div id="content" class="maven-pro">Fishes <dev id="fish-count-water" class="fish-count-water"></dev> <dev id="fish-count-lava" class="fish-count-lava"></dev> <dev id="fish-count-ice" class="fish-count-ice"></dev></div>
         <div id="content" class="maven-pro">Treasures <dev id="treasures-water" class="treasures-water"></dev> <dev id="treasures-lava" class="treasures-lava"></dev> <dev id="treasures-ice" class="treasures-ice"></dev></div>
@@ -26,16 +26,29 @@
             <script>
                 $(document).ready(function() {
                     const apiKey = "b3909a29-acb5-4910-a753-f3b18ad7bb41";
-    
-                    $("#submit").click(function() {
-                        const username = $("#username").val();
-                        const apiUrl = `https://playerdb.co/api/player/minecraft/${username}`;
-                        $.getJSON(apiUrl, function(data) {
-                            const uuid = data.data.player.id;
-                            const fishingApiUrl = `https://api.hypixel.net/player?key=${apiKey}&uuid=${uuid}`;
-                            fetchFishingStats(fishingApiUrl);
-                        });
-                    });
+                    
+$("#submit").click(function() {
+  const username = $("#username").val();
+  const apiUrl = `https://playerdb.co/api/player/minecraft/${username}`;
+  $.getJSON(apiUrl, function(data) {
+    const uuid = data.data.player.id;
+    const fishingApiUrl = `https://api.hypixel.net/player?key=${apiKey}&uuid=${uuid}`;
+    fetchFishingStats(fishingApiUrl);
+    const SKINURL = `https://minotar.net/armor/body/${uuid}`;
+    const skinImage = document.getElementById('skin');
+    skinImage.addEventListener('load', function() {
+      if (skinImage.naturalWidth > 0) {
+        skinImage.style.display = 'block'; // show the image
+      }
+    });
+    skinImage.src = ''; // reset src attribute
+    fetch(SKINURL)
+     .then(response => response.blob())
+     .then(skinblob => {
+        skinImage.src = URL.createObjectURL(skinblob);
+      });
+  });
+});
     
                     function fetchFishingStats(apiUrl) {
                         $.getJSON(apiUrl, function(data) {

@@ -50,6 +50,11 @@ body {
   align-self: center;
 }
 
+#skin {
+  height: 120px;
+  width: 60px;
+  align-self: center;
+}
 
 #content {
   font-weight: bold;
