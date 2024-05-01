@@ -168,7 +168,7 @@ DisplayName = data.player.playername;
         document.getElementById("rank").innerHTML = `<span style color:#FFAA00>[EVENTS] ${DisplayName}</span>`;
         break;
       case 'YOUTUBER':
-        document.getElementById("rank").innerHTML = `<span style="color:#FF5555">[</span><span style="color:#FFFFFF">YOUTUBE</span><span style="color:#FF5555">] ${DisplayName}</span>`;
+        document.getElementById("rank").innerHTML = `<span style="color:#FF5555">[</span><span style="color:#000000">YOUTUBE</span><span style="color:#FF5555">] ${DisplayName}</span>`;
         break;
       case 'MODERATOR':
         document.getElementById("rank").innerHTML = `<span style="color:#00AA00">[MOD] ${DisplayName}</span>`;
@@ -204,6 +204,14 @@ DisplayName = data.player.playername;
     
                             if (data.hasOwnProperty("player")) {
                                 $("#fish-count-water").text(fishCountWater || "This player never logged onto hypixel.");
+                                $("#fish-count-lava").text("");
+                                $("#fish-count-ice").text("");
+                                $("#treasures-water").text("");
+                                $("#treasures-lava").text("");
+                                $("#treasures-ice").text("");
+                                $("#junk-water").text("");
+                                $("#junk-lava").text("");
+                                $("#junk-ice").text("");
                             } else {
                                 $("#fish-count-water").text("This player never logged onto hypixel.");
                                 $("#fish-count-lava").text("");
