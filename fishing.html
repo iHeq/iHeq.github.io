@@ -202,6 +202,20 @@ DisplayName = data.player.playername;
         break;
     };
     
+                            if (data.hasOwnProperty("player")) {
+                                $("#fish-count-water").text(fishCountWater || "This player never logged onto hypixel.");
+                            } else {
+                                $("#fish-count-water").text("This player never logged onto hypixel.");
+                                $("#fish-count-lava").text("");
+                                $("#fish-count-ice").text("");
+                                $("#treasures-water").text("");
+                                $("#treasures-lava").text("");
+                                $("#treasures-ice").text("");
+                                $("#junk-water").text("");
+                                $("#junk-lava").text("");
+                                $("#junk-ice").text("");
+                            }
+
                             if (data.player.stats.MainLobby.hasOwnProperty("fishing")) {
                                 var fishCountWater = data.player.stats.MainLobby.fishing.stats.permanent.water.fish;
                                 $("#fish-count-water").text(fishCountWater || "This player has no fishing stats.");
@@ -215,8 +229,8 @@ DisplayName = data.player.playername;
                                 $("#junk-water").text("");
                                 $("#junk-lava").text("");
                                 $("#junk-ice").text("");
-
                             }
+
 
                             if (data.player.stats.MainLobby.fishing.stats.permanent.hasOwnProperty("water")) {
                                 var fishCountWater = data.player.stats.MainLobby.fishing.stats.permanent.water.fish;
