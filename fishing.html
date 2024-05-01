@@ -12,8 +12,9 @@
   </head>
   <body>
     <div id="container">
+    
         <div id="title" class="jacquard-24-regular">Main Lobby Fishing Stats</div>
-        
+        <p id="rank"></p>
 
         <div id="content" class="maven-pro">Fishes <dev id="fish-count-water" class="fish-count-water"></dev> <dev id="fish-count-lava" class="fish-count-lava"></dev> <dev id="fish-count-ice" class="fish-count-ice"></dev></div>
         <div id="content" class="maven-pro">Treasures <dev id="treasures-water" class="treasures-water"></dev> <dev id="treasures-lava" class="treasures-lava"></dev> <dev id="treasures-ice" class="treasures-ice"></dev></div>
@@ -38,16 +39,175 @@
     
                     function fetchFishingStats(apiUrl) {
                         $.getJSON(apiUrl, function(data) {
-                            if (data.player.playername) {
-                                var fishValue = data.player.playername;
-                                $("#title").text(fishValue);
-                            } else {
-                                $("#title").text(0);
+
+                            /* RANK */
+
+    var DisplayName;
+    var ACTIVERANK;
+    var PLUSCOLOR = data.player.rankPlusColor;
+    var RANK = data.player.prefix;
+    var STAFF = data.player.rank;
+    var PLUSPLUS = data.player.monthlyPackageRank;
+    var NEW = data.player.newPackageRank;
+    var PACKAGE = data.player.packageRank;
+    var RANKCOLOR = data.player.monthlyRankColor;
+
+    if (RANK!== undefined) {
+  ACTIVERANK = RANK;
+} else if (STAFF == 'YOUTUBER' || STAFF == 'MODERATOR' || STAFF == 'ADMIN' || STAFF == 'GAME_MASTER') {
+  ACTIVERANK = STAFF;
+} else if (PLUSPLUS == `SUPERSTAR`) {
+  ACTIVERANK = PLUSPLUS;
+} else if (NEW == 'MVP_PLUS' || NEW == 'MVP' || NEW == 'VIP_PLUS' || NEW == 'VIP' || NEW == 'NONE') {
+  ACTIVERANK = NEW;
+} else {
+  ACTIVERANK = PACKAGE;
+}
+
+DisplayName = data.player.playername;
+
+    switch (PLUSCOLOR) {
+      case undefined:
+        PLUSCOLOR = '<span style="color:#FF5555">';
+        break;
+      case 'RED':
+        PLUSCOLOR = '<span style="color:#FF5555">';
+        break;
+      case 'GOLD':
+        PLUSCOLOR = '<span style="color:#FFAA00">';
+        break;
+      case 'GREEN':
+        PLUSCOLOR = '<span style="color:#55FF55">';
+        break;
+      case 'YELLOW':
+        PLUSCOLOR = '<span style="color:#FFFF55">';
+        break;
+      case 'LIGHT_PURPLE':
+        PLUSCOLOR = '<span style="color:#FF55FF">';
+        break;
+      case 'WHITE':
+        PLUSCOLOR = '<span style="color:#FFFFFF">';
+        break;
+      case 'BLUE':
+        PLUSCOLOR = '<span style="color:#5555FF">';
+        break;
+      case 'DARK_GREEN':
+        PLUSCOLOR = '<span style="color:#00AA00">';
+        break;
+      case 'DARK_RED':
+        PLUSCOLOR = '<span style="color:#AA0000">';
+        break;
+      case 'DARK_AQUA':
+        PLUSCOLOR = '<span style="color:#00AAAA">';
+        break;
+      case 'DARK_PURPLE':
+        PLUSCOLOR = '<span style="color:#AA00AA">';
+        break;
+      case 'DARK_GRAY':
+        PLUSCOLOR = '<span style="color:#555555">';
+        break;
+      case 'BLACK':
+        PLUSCOLOR = '<span style="color:#000000">';
+        break;
+      case 'DARK_BLUE':
+        PLUSCOLOR = '<span style="color:#0000AA">';
+        break;
+      default:
+        PLUSCOLOR = '<span style="color:#FF5555">';
+        break;
+    };
+
+    switch (RANKCOLOR) {
+        case 'GOLD':
+          RANKCOLOR = '#FFAA00';
+          break;
+        case 'AQUA':
+          RANKCOLOR = '#55FFFF'
+          break;
+        case undefined:
+          RANKCOLOR = '#FFAA00';
+          break;
+    };
+
+                                if (RANK !== undefined) {
+                                ACTIVERANK = RANK;
+                            } else if (STAFF == 'YOUTUBER' || STAFF == 'MODERATOR' || STAFF == 'ADMIN' || STAFF == 'GAME_MASTER') {
+                                ACTIVERANK = STAFF;
+                                    } else if (PLUSPLUS == `SUPERSTAR`) {
+                                ACTIVERANK = PLUSPLUS;
+                                } else if (NEW == 'MVP_PLUS' || NEW == 'MVP' || NEW == 'VIP_PLUS' || NEW == 'VIP' || NEW == 'NONE') {
+                                ACTIVERANK = NEW;
+                                } else {
+                                ACTIVERANK = PACKAGE;
                             }
+
+                            switch (ACTIVERANK) {
+      case '§c[OWNER]':
+        document.getElementById("rank").innerHTML = `<span style="color:#FF5555">[OWNER] ${DisplayName}</span>`;
+        break;
+      case '§d[PIG§b+++§d]':
+        document.getElementById("rank").innerHTML = `<span style="color:#FF55FF">[PIG</span><span style="color:#55FFFF">+++</span><span style="color:#FF55FF">] ${DisplayName}</span>`;
+        break;
+      case '§6[MOJANG]':
+        document.getElementById("rank").innerHTML = `<span style="color:#FFAA00">[MOJANG] ${DisplayName}</span>`;
+        break;
+      case '§6[EVENTS]':
+        document.getElementById("rank").innerHTML = `<span style color:#FFAA00>[EVENTS] ${DisplayName}</span>`;
+        break;
+      case 'YOUTUBER':
+        document.getElementById("rank").innerHTML = `<span style="color:#FF5555">[</span><span style="color:#FFFFFF">YOUTUBE</span><span style="color:#FF5555">] ${DisplayName}</span>`;
+        break;
+      case 'MODERATOR':
+        document.getElementById("rank").innerHTML = `<span style="color:#00AA00">[MOD] ${DisplayName}</span>`;
+        break;
+      case 'ADMIN':
+        document.getElementById("rank").innerHTML = `<span style="color:#FF5555">[ADMIN] ${DisplayName}</span>`;
+        break;
+      case 'GAME_MASTER':
+        document.getElementById("rank").innerHTML = `<span style="color:#00AA00">[GM] ${DisplayName}</span>`;
+        break;
+      case 'SUPERSTAR':
+        document.getElementById("rank").innerHTML = `<span style="color:${RANKCOLOR}">[MVP</span>${PLUSCOLOR}++</span><span style="color:${RANKCOLOR}">] ${DisplayName}</span>`;
+        break;
+      case 'MVP_PLUS':
+        document.getElementById("rank").innerHTML = `<span style="color:#55FFFF">[MVP</span>${PLUSCOLOR}+</span><span style="color:#55FFFF">] ${DisplayName}</span>`;
+        break;
+      case 'MVP':
+        document.getElementById("rank").innerHTML = `<span style="color:#55FFFF">[MVP] ${DisplayName}</span>`;
+        break;
+      case 'VIP_PLUS':
+        document.getElementById("rank").innerHTML = `<span style="color:#55FF55">[VIP</span><span style="color:#FFAA00">+</span><span style="color:#55FF55">] ${DisplayName}</span>`;
+        break;
+      case 'VIP':
+        document.getElementById("rank").innerHTML = `<span style="color:#55FF55">[VIP] ${DisplayName}</span>`; 
+        break;
+      case 'NONE':
+        document.getElementById("rank").innerHTML = `<span style="color:#AAAAAA">${DisplayName}</span>`;
+        break;
+      default:
+        document.getElementById("rank").innerHTML = `<span style="color:#AAAAAA">${DisplayName}</span>`;
+        break;
+    };
     
+                            if (data.player.stats.MainLobby.hasOwnProperty("fishing")) {
+                                var fishCountWater = data.player.stats.MainLobby.fishing.stats.permanent.water.fish;
+                                $("#fish-count-water").text(fishCountWater || "This player has no fishing stats.");
+                            } else {
+                                $("#fish-count-water").text("This player has no fishing stats.");
+                                $("#fish-count-lava").text("");
+                                $("#fish-count-ice").text("");
+                                $("#treasures-water").text("");
+                                $("#treasures-lava").text("");
+                                $("#treasures-ice").text("");
+                                $("#junk-water").text("");
+                                $("#junk-lava").text("");
+                                $("#junk-ice").text("");
+
+                            }
+
                             if (data.player.stats.MainLobby.fishing.stats.permanent.hasOwnProperty("water")) {
                                 var fishCountWater = data.player.stats.MainLobby.fishing.stats.permanent.water.fish;
-                                $("#fish-count-water").text(fishCountWater);
+                                $("#fish-count-water").text(fishCountWater || "0");
                             } else {
                                 $("#fish-count-water").text(0);
                             }
@@ -68,51 +228,53 @@
     
                             if (data.player.stats.MainLobby.fishing.stats.permanent.hasOwnProperty("water")) {
                                 var treasuresWater = data.player.stats.MainLobby.fishing.stats.permanent.water.treasure;
-                                $("#treasures-water").text(treasuresWater);
+                                $("#treasures-water").text(treasuresWater || "0");
                             } else {
                                 $("#treasures-water").text(0);
                             }
 
                             if (data.player.stats.MainLobby.fishing.stats.permanent.hasOwnProperty("lava")) {
                                 var treasuresLava = data.player.stats.MainLobby.fishing.stats.permanent.lava.treasure;
-                                $("#treasures-lava").text(treasuresLava);
+                                $("#treasures-lava").text(treasuresLava || "0");
                             } else {
                                 $("#treasures-lava").text(0);
                             }
 
                             if (data.player.stats.MainLobby.fishing.stats.permanent.hasOwnProperty("ice")) {
                                 var treasuresIce = data.player.stats.MainLobby.fishing.stats.permanent.ice.treasure;
-                                $("#treasures-ice").text(treasuresIce);
+                                $("#treasures-ice").text(treasuresIce || "0");
                             } else {
                                 $("#treasures-ice").text(0);
                             }
     
                             if (data.player.stats.MainLobby.fishing.stats.permanent.hasOwnProperty("water")) {
                                 var junkWater = data.player.stats.MainLobby.fishing.stats.permanent.water.junk;
-                                $("#junk-water").text(junkWater);
+                                $("#junk-water").text(junkWater || "0");
                             } else {
                                 $("#junk-water").text(0);
                             }
 
                             if (data.player.stats.MainLobby.fishing.stats.permanent.hasOwnProperty("lava")) {
                                 var junkLava = data.player.stats.MainLobby.fishing.stats.permanent.lava.junk;
-                                $("#junk-lava").text(junkLava);
+                                $("#junk-lava").text(junkLava || "0");
                             } else {
                                 $("#junk-lava").text(0);
                             }
 
                             if (data.player.stats.MainLobby.fishing.stats.permanent.hasOwnProperty("ice")) {
                                 var junkIce = data.player.stats.MainLobby.fishing.stats.permanent.ice.junk;
-                                $("#junk-ice").text(junkIce);
+                                $("#junk-ice").text(junkIce || "0");
                             } else {
                                 $("#junk-ice").text(0);
                             }
                             
+                            var DisplayName = data.player.playername;
+                            $("#rank-display").html(`${ACTIVERANK} ${DisplayName}`);
                         });
                     }
                 });
             </script>
-            <p class="oswald">Last Update: Added different <span id="water-type">environments</span>!</p>
+            <p class="oswald">Last Update: Fixed a <span id="water-type">some issues</span> if the player has no stats!</p>
     </div>
 
   </body>
