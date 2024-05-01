@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="style.css">
 <html>
   <head>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jacquard+24&display=swap" rel="stylesheet">
@@ -22,6 +23,25 @@
 
             <input type="text" id="username" placeholder="Enter username" class="maven-pro">
             <button id="submit" class="maven-pro">Serach</button>
+            <div id="upgrades" class="maven-pro">
+              <button class="maven-pro" id="upgrades-button">Upgrades</button>
+              <ul id="upgrades-list" style="display: none; padding-top: 16px; margin-top: 0px; padding-bottom: 16px; margin-bottom: 0px;" >
+                <p style="margin-top: 0px; margin-bottom: 0px; color: rgb(209, 43, 153); font-weight: bold;">Lure <dev id="upgrade-lure" class="upgrade-lure" style="color: #000000;"></p>
+                <p style="margin-top: 5px; margin-bottom: 0px; color: brown; font-weight: bold;">Dumpster Diver <dev id="upgrade-dd" class="upgrade-dd" style="color: #000000;"></p>
+                <p style="margin-top: 5px; margin-bottom: 0px; color: yellow; font-weight: bold;">Mythical Hook <dev id="upgrade-hook" class="upgrade-hook" style="color: #000000;"></p>
+                <p style="margin-top: 5px; margin-bottom: 0px; color: greenyellow; font-weight: bold;">Herbivore <dev id="upgrade-herbi" class="upgrade-herbi" style="color: #000000;"></p>
+                <p style="margin-top: 5px; margin-bottom: 0px; color: red; font-weight: bold;">Vulcans Blessing <dev id="upgrade-vulcan" class="upgrade-vulcan" style="color: #000000;"></p>
+              </ul>
+            </div>
+            
+            <script>
+              $(document).ready(function() {
+                $("#upgrades-button").click(function() {
+                  $("#upgrades-list").slideToggle();
+                });
+              });
+            </script>
+
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
             <script>
                 $(document).ready(function() {
@@ -212,6 +232,11 @@ DisplayName = data.player.playername;
                                 $("#junk-water").text("");
                                 $("#junk-lava").text("");
                                 $("#junk-ice").text("");
+                                $("#upgrade-lure").text("0");
+                                $("#upgrade-dd").text("0");
+                                $("#upgrade-hook").text("0");
+                                $("#upgrade-herbi").text("0");
+                                $("#upgrade-vulcan").text("0");
                             } else {
                                 $("#fish-count-water").text("This player never logged onto hypixel.");
                                 $("#fish-count-lava").text("");
@@ -222,6 +247,11 @@ DisplayName = data.player.playername;
                                 $("#junk-water").text("");
                                 $("#junk-lava").text("");
                                 $("#junk-ice").text("");
+                                $("#upgrade-lure").text("0");
+                                $("#upgrade-dd").text("0");
+                                $("#upgrade-hook").text("0");
+                                $("#upgrade-herbi").text("0");
+                                $("#upgrade-vulcan").text("0");
                             }
 
                             if (data.player.stats.MainLobby.hasOwnProperty("fishing")) {
@@ -237,8 +267,12 @@ DisplayName = data.player.playername;
                                 $("#junk-water").text("");
                                 $("#junk-lava").text("");
                                 $("#junk-ice").text("");
+                                $("#upgrade-lure").text("0");
+                                $("#upgrade-dd").text("0");
+                                $("#upgrade-hook").text("0");
+                                $("#upgrade-herbi").text("0");
+                                $("#upgrade-vulcan").text("0");
                             }
-
 
                             if (data.player.stats.MainLobby.fishing.stats.permanent.hasOwnProperty("water")) {
                                 var fishCountWater = data.player.stats.MainLobby.fishing.stats.permanent.water.fish;
@@ -302,14 +336,59 @@ DisplayName = data.player.playername;
                             } else {
                                 $("#junk-ice").text(0);
                             }
+
+                            /* upgrades */
+
+                            if (data.player.stats.MainLobby.fishing.hasOwnProperty("enchants")) {
+                              var upgradeLure = data.player.stats.MainLobby.fishing.enchants.lure.level;
+                              $("#upgrade-lure").text(upgradeLure || "0");
+                            } else {
+                              $("#upgrade-lure").text("0");
+                              $("#upgrade-dd").text("0");
+                              $("#upgrade-hook").text("0");
+                              $("#upgrade-herbi").text("0");
+                              $("#upgrade-vulcan").text("0");
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.enchants.hasOwnProperty("dumpster_diver")) {
+                              var upgradeDD = data.player.stats.MainLobby.fishing.enchants.dumpster_diver.level;
+                              $("#upgrade-dd").text(upgradeDD || "0");
+
+                            } else {
+                              $("#upgrade-dd").text("0");
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.enchants.hasOwnProperty("mythical_hook")) {
+                              var upgradeHook = data.player.stats.MainLobby.fishing.enchants.mythical_hook.level;
+                              $("#upgrade-hook").text(upgradeHook || "0");
+                              
+                            } else {
+                              $("#upgrade-hook").text("0");
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.enchants.hasOwnProperty("herbivore")) {
+                              var upgradeHebi = data.player.stats.MainLobby.fishing.enchants.herbivore.level;
+                              $("#upgrade-herbi").text(upgradeHebi || "0");
+
+                            } else {
+                              $("#upgrade-herbi").text("0");
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.enchants.hasOwnProperty("vulcans_blessing")) {
+                              var upgradeVulcan = data.player.stats.MainLobby.fishing.enchants.vulcans_blessing.level;
+                              $("#upgrade-vulcan").text(upgradeVulcan || "0");
                             
+                            } else {
+                              $("#upgrade-vulcan").text("0");
+                            }
+
                             var DisplayName = data.player.playername;
                             $("#rank-display").html(`${ACTIVERANK} ${DisplayName}`);
                         });
                     }
                 });
             </script>
-            <p class="oswald">Last Update: Added the <span id="water-type">skin and rank</span> of the player you are viewing!</p>
+            <p class="oswald">Last Update: Added the feature to browse a players <span id="water-type">upgrades</span>!</p>
     </div>
 
   </body>
