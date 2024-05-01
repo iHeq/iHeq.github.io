@@ -62,8 +62,15 @@ body {
   margin-bottom: 10px;
 }
 
-#upgrades-list {
+/* lists */
+#upgrades-list, #upgrades-list2 {
   background-color: #ddd;
+  display: none; 
+  padding-top: 16px; 
+  margin-top: 0px; 
+  padding-bottom: 16px; 
+  margin-bottom: 5px;
+  border-radius: 5px;
 }
 
 

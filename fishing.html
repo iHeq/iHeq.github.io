@@ -25,12 +25,22 @@
             <button id="submit" class="maven-pro">Serach</button>
             <div id="upgrades" class="maven-pro">
               <button class="maven-pro" id="upgrades-button">Upgrades</button>
-              <ul id="upgrades-list" style="display: none; padding-top: 16px; margin-top: 0px; padding-bottom: 16px; margin-bottom: 0px;" >
-                <p style="margin-top: 0px; margin-bottom: 0px; color: rgb(209, 43, 153); font-weight: bold;">Lure <dev id="upgrade-lure" class="upgrade-lure" style="color: #000000;"></p>
-                <p style="margin-top: 5px; margin-bottom: 0px; color: brown; font-weight: bold;">Dumpster Diver <dev id="upgrade-dd" class="upgrade-dd" style="color: #000000;"></p>
-                <p style="margin-top: 5px; margin-bottom: 0px; color: yellow; font-weight: bold;">Mythical Hook <dev id="upgrade-hook" class="upgrade-hook" style="color: #000000;"></p>
-                <p style="margin-top: 5px; margin-bottom: 0px; color: greenyellow; font-weight: bold;">Herbivore <dev id="upgrade-herbi" class="upgrade-herbi" style="color: #000000;"></p>
-                <p style="margin-top: 5px; margin-bottom: 0px; color: red; font-weight: bold;">Vulcans Blessing <dev id="upgrade-vulcan" class="upgrade-vulcan" style="color: #000000;"></p>
+              <ul id="upgrades-list">
+                <p style="margin-top: 0px; margin-bottom: 0px; color: rgb(209, 43, 153); ">Lure <dev id="upgrade-lure" class="upgrade-lure" style="color: #000000;"></p>
+                <p style="margin-top: 5px; margin-bottom: 0px; color: brown; ">Dumpster Diver <dev id="upgrade-dd" class="upgrade-dd" style="color: #000000;"></p>
+                <p style="margin-top: 5px; margin-bottom: 0px; color: yellow; ">Mythical Hook <dev id="upgrade-hook" class="upgrade-hook" style="color: #000000;"></p>
+                <p style="margin-top: 5px; margin-bottom: 0px; color: greenyellow; ">Herbivore <dev id="upgrade-herbi" class="upgrade-herbi" style="color: #000000;"></p>
+                <p style="margin-top: 5px; margin-bottom: 0px; color: red; ">Vulcans Blessing <dev id="upgrade-vulcan" class="upgrade-vulcan" style="color: #000000;"></p>
+              </ul>
+              <button class="maven-pro" id="upgrades-button2">Mythical Fish</button>
+              <ul id="upgrades-list2">
+                <p style="margin-top: 0px; margin-bottom: 0px; color: yellow; ">Selene <span id="selene" class="selene" style="color: #000000;"></span> (<span id="selene-pers" class="selene-pers" style="color: #000000;"></span> kg)</p>
+                <p style="margin-top: 0px; margin-bottom: 0px; color: yellow; ">Helios <span id="helios" class="helios" style="color: #000000;"></span> (<span id="helios-pers" class="helios-pers" style="color: #000000;"></span> kg)</p>
+                <p style="margin-top: 0px; margin-bottom: 0px; color: green; ">Nyx <span id="nyx" class="nyx" style="color: #000000;"></span> (<span id="nyx-pers" class="nyx-pers" style="color: #000000;"></span> kg)</p>
+                <p style="margin-top: 0px; margin-bottom: 0px; color: green; ">Aphrodite <span id="aphrodite" class="aphrodite" style="color: #000000;"></span> (<span id="aphrodite-pers" class="aphrodite-pers" style="color: #000000;"></span> kg)</p>
+                <p style="margin-top: 0px; margin-bottom: 0px; color: darkblue; ">Zeus <span id="zeus" class="zeus" style="color: #000000;"></span> (<span id="zeus-pers" class="zeus-pers" style="color: #000000;"></span> kg)</p>
+                <p style="margin-top: 0px; margin-bottom: 0px; color: darkcyan; ">Archimedes <span id="archimedes" class="archimedes" style="color: #000000;"></span> (<span id="archimedes-pers" class="archimedes-pers" style="color: #000000;"></span> kg)</p>
+                <p style="margin-top: 0px; margin-bottom: 0px; color: darkmagenta; ">Hades <span id="hades" class="hades" style="color: #000000;"></span> (<span id="hades-pers" class="hades-pers" style="color: #000000;"></span> kg)</p>
               </ul>
             </div>
             
@@ -38,6 +48,11 @@
               $(document).ready(function() {
                 $("#upgrades-button").click(function() {
                   $("#upgrades-list").slideToggle();
+                  $("#upgrades-list2").slideUp(); // close the other list if it's open
+                });
+                $("#upgrades-button2").click(function() {
+                  $("#upgrades-list2").slideToggle();
+                  $("#upgrades-list").slideUp(); // close the other list if it's open
                 });
               });
             </script>
@@ -382,13 +397,127 @@ DisplayName = data.player.playername;
                               $("#upgrade-vulcan").text("0");
                             }
 
+                            /* special and weight */
+
+                            if (data.player.stats.MainLobby.fishing.orbs.hasOwnProperty("selene")) {
+                              var selene = data.player.stats.MainLobby.fishing.orbs.selene;
+                              $("#selene").text(selene || "0");
+                            
+                            } else {
+                              $("#selene").text("0");
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.orbs.weight.hasOwnProperty("selene")) {
+                              var seleneweight = data.player.stats.MainLobby.fishing.orbs.weight.selene;
+                              $("#selene-pers").text(seleneweight || "0");
+                            
+                            } else {
+                              $("#selene-pers").text("0");
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.orbs.hasOwnProperty("helios")) {
+                              var helios = data.player.stats.MainLobby.fishing.orbs.helios;
+                              $("#helios").text(helios || "0");
+                            
+                            } else {
+                              $("#helios").text("0");
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.orbs.weight.hasOwnProperty("helios")) {
+                              var heliosweight = data.player.stats.MainLobby.fishing.orbs.weight.helios;
+                              $("#helios-pers").text(heliosweight || "0");
+                            
+                            } else {
+                              $("#helios-pers").text("0");
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.orbs.weight.hasOwnProperty("nyx")) {
+                              var nyx = data.player.stats.MainLobby.fishing.orbs.nyx;
+                              $("#nyx").text(nyx || "0");
+                            
+                            } else {
+                              $("#nyx").text("0");
+                            }
+                            
+                            if (data.player.stats.MainLobby.fishing.orbs.weight.hasOwnProperty("nyx")) {
+                              var nyxweight = data.player.stats.MainLobby.fishing.orbs.weight.nyx;
+                              $("#nyx-pers").text(nyxweight || "0");
+                            
+                            } else {
+                              $("#nyx-pers").text("0");
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.orbs.weight.hasOwnProperty("aphrodite")) {
+                              var aphrodite = data.player.stats.MainLobby.fishing.orbs.aphrodite;
+                              $("#aphrodite").text(aphrodite || "0");
+                            
+                            } else {
+                              $("#aphrodite").text("0");
+                            }
+                            
+                            if (data.player.stats.MainLobby.fishing.orbs.weight.hasOwnProperty("aphrodite")) {
+                              var aphroditeweight = data.player.stats.MainLobby.fishing.orbs.weight.aphrodite;
+                              $("#aphrodite-pers").text(aphroditeweight || "0");
+                            
+                            } else {
+                              $("#aphrodite-pers").text("0");
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.orbs.weight.hasOwnProperty("zeus")) {
+                              var zeus = data.player.stats.MainLobby.fishing.orbs.zeus;
+                              $("#zeus").text(zeus || "0");
+                            
+                            } else {
+                              $("#zeus").text("0");
+                            }
+                            
+                            if (data.player.stats.MainLobby.fishing.orbs.weight.hasOwnProperty("zeus")) {
+                              var zeusweight = data.player.stats.MainLobby.fishing.orbs.weight.zeus;
+                              $("#zeus-pers").text(zeusweight || "0");
+                            
+                            } else {
+                              $("#zeus-pers").text("0");
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.orbs.weight.hasOwnProperty("archimedes")) {
+                              var archimedes = data.player.stats.MainLobby.fishing.orbs.archimedes;
+                              $("#archimedes").text(archimedes || "0");
+                            
+                            } else {
+                              $("#archimedes").text("0");
+                            }
+                            
+                            if (data.player.stats.MainLobby.fishing.orbs.weight.hasOwnProperty("archimedes")) {
+                              var archimedesweight = data.player.stats.MainLobby.fishing.orbs.weight.archimedes;
+                              $("#archimedes-pers").text(archimedesweight || "0");
+                            
+                            } else {
+                              $("#archimedes-pers").text("0");
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.orbs.weight.hasOwnProperty("hades")) {
+                              var hades = data.player.stats.MainLobby.fishing.orbs.hades;
+                              $("#hades").text(hades || "0");
+                            
+                            } else {
+                              $("#hades").text("0");
+                            }
+                            
+                            if (data.player.stats.MainLobby.fishing.orbs.weight.hasOwnProperty("hades")) {
+                              var hadesweight = data.player.stats.MainLobby.fishing.orbs.weight.hades;
+                              $("#hades-pers").text(hadesweight || "0");
+                            
+                            } else {
+                              $("#hades-pers").text("0");
+                            }
+
                             var DisplayName = data.player.playername;
                             $("#rank-display").html(`${ACTIVERANK} ${DisplayName}`);
                         });
                     }
                 });
             </script>
-            <p class="oswald">Last Update: Added the feature to browse a players <span id="water-type">upgrades</span>!</p>
+            <p class="oswald">Last Update: Added <span id="water-type">mythical fish</span>!</p>
     </div>
 
   </body>
