@@ -73,6 +73,94 @@ body {
   border-radius: 5px;
 }
 
+/*  special fish tt */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  align-self: center;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  align-self: center;
+  width: 250px;
+  left: 250px;
+  top: 30vh;
+  background-color: rgb(255, 255, 255);
+  color: #000000;
+  text-align: normal;
+  padding: 10px 10px 10px 10px;
+  border-radius: 6px;
+  border: 2px solid black;
+  font-size: 12px;
+  font-family: 'Oswald', sans-serif;
+  transform: translateY(-50%);
+  box-shadow: 10px 10px 5px rgba(0, 0, 0);
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+.tooltip::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.tooltip::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
+
+.tooltip::-webkit-scrollbar-track {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+
+.tooltip .tooltiptext {
+  /* ... */
+  --scroll-percentage: 0%;
+}
+
+.tooltip .tooltiptext::-webkit-scrollbar-thumb {
+  background-color: var(--scroll-percentage);
+}
+
+.tooltip .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  bottom: 100%;  /* At the top of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent rgb(0, 0, 0) transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip .tooltiptext {
+  visibility: visible;
+
+  transition: opacity 0.3s ease-out;
+}
+.tooltip:hover .tooltiptext {
+  opacity: 1;
+}
+
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Oswald'), url('https://fonts.gstatic.com/s/oswald/v30/Y_TKV6o8WovbUd3m_X9aAA.woff2') format('woff2');
+}
+
+.tooltip p {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tooltip p span {
+  text-align: left;
+}
 
 /* FISH COUNTERS */
 
@@ -192,6 +280,32 @@ button {
 
 button:hover {
   background-color: #0056b3;
+}
+
+/* pop up test */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  transform: translate(0, 0);
+  background-color: #75a9e0;
+  color: #fff;
+  padding: 15px 30px;
+  border-radius: 5px;
+  z-index: 1000;
+  border: 2px solid black;
+  max-height: 300px; /* maximum height */
+  overflow-y: auto; /* make it scrollable */
+  scrollbar-width: thin; /* make scrollbar thinner */
+}
+
+#popup-content {
+  margin: 0;
+  font-size: 18px;
 }
 
 /* FONTS */
