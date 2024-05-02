@@ -442,7 +442,7 @@ DisplayName = data.player.playername;
                                 $("#hades-pers").text("0");
                             }
 
-                            if (data.player.stats.MainLobby.hasOwnProperty("fishing")) {
+                            if (data.player.stats.MainLobby?.hasOwnProperty("fishing")) {
                                 var fishCountWater = data.player.stats.MainLobby.fishing.stats.permanent.water.fish;
                                 $("#fish-count-water").text(fishCountWater || "This player has no fishing stats.");
                             } else {
@@ -477,63 +477,63 @@ DisplayName = data.player.playername;
                                 $("#hades-pers").text("0");
                             }
 
-                            if (data.player.stats.MainLobby.fishing.stats.permanent.hasOwnProperty("water")) {
+                            if (data.player.stats?.MainLobby?.fishing?.stats?.permanent?.hasOwnProperty("water")) {
                                 var fishCountWater = data.player.stats.MainLobby.fishing.stats.permanent.water.fish;
                                 $("#fish-count-water").text(fishCountWater || "0");
                             } else {
                                 $("#fish-count-water").text(0);
                             }
 
-                            if (data.player.stats.MainLobby.fishing.stats.permanent.hasOwnProperty("lava")) {
+                            if (data.player.stats?.MainLobby?.fishing?.stats?.permanent?.hasOwnProperty("lava")) {
                                 var fishCountLava = data.player.stats.MainLobby.fishing.stats.permanent.lava.fish;
                                 $("#fish-count-lava").text(fishCountLava || "0");
                             } else {
                                 $("#fish-count-lava").text("0");
                             }
 
-                            if (data.player.stats.MainLobby.fishing.stats.permanent.hasOwnProperty("ice")) {
+                            if (data.player.stats?.MainLobby?.fishing?.stats?.permanent?.hasOwnProperty("ice")) {
                                 var fishCountIce = data.player.stats.MainLobby.fishing.stats.permanent.ice.fish;
                                 $("#fish-count-ice").text(fishCountIce || "0");
                             } else {
                                 $("#fish-count-ice").text("0");
                             }
     
-                            if (data.player.stats.MainLobby.fishing.stats.permanent.hasOwnProperty("water")) {
+                            if (data.player.stats?.MainLobby?.fishing?.stats?.permanent?.hasOwnProperty("water")) {
                                 var treasuresWater = data.player.stats.MainLobby.fishing.stats.permanent.water.treasure;
                                 $("#treasures-water").text(treasuresWater || "0");
                             } else {
                                 $("#treasures-water").text(0);
                             }
 
-                            if (data.player.stats.MainLobby.fishing.stats.permanent.hasOwnProperty("lava")) {
+                            if (data.player.stats?.MainLobby?.fishing?.stats?.permanent?.hasOwnProperty("lava")) {
                                 var treasuresLava = data.player.stats.MainLobby.fishing.stats.permanent.lava.treasure;
                                 $("#treasures-lava").text(treasuresLava || "0");
                             } else {
                                 $("#treasures-lava").text(0);
                             }
 
-                            if (data.player.stats.MainLobby.fishing.stats.permanent.hasOwnProperty("ice")) {
+                            if (data.player.stats?.MainLobby?.fishing?.stats?.permanent?.hasOwnProperty("ice")) {
                                 var treasuresIce = data.player.stats.MainLobby.fishing.stats.permanent.ice.treasure;
                                 $("#treasures-ice").text(treasuresIce || "0");
                             } else {
                                 $("#treasures-ice").text(0);
                             }
     
-                            if (data.player.stats.MainLobby.fishing.stats.permanent.hasOwnProperty("water")) {
+                            if (data.player.stats?.MainLobby?.fishing?.stats?.permanent?.hasOwnProperty("water")) {
                                 var junkWater = data.player.stats.MainLobby.fishing.stats.permanent.water.junk;
                                 $("#junk-water").text(junkWater || "0");
                             } else {
                                 $("#junk-water").text(0);
                             }
 
-                            if (data.player.stats.MainLobby.fishing.stats.permanent.hasOwnProperty("lava")) {
+                            if (data.player.stats?.MainLobby?.fishing?.stats?.permanent?.hasOwnProperty("lava")) {
                                 var junkLava = data.player.stats.MainLobby.fishing.stats.permanent.lava.junk;
                                 $("#junk-lava").text(junkLava || "0");
                             } else {
                                 $("#junk-lava").text(0);
                             }
 
-                            if (data.player.stats.MainLobby.fishing.stats.permanent.hasOwnProperty("ice")) {
+                            if (data.player.stats?.MainLobby?.fishing?.stats?.permanent?.hasOwnProperty("ice")) {
                                 var junkIce = data.player.stats.MainLobby.fishing.stats.permanent.ice.junk;
                                 $("#junk-ice").text(junkIce || "0");
                             } else {
@@ -542,7 +542,7 @@ DisplayName = data.player.playername;
 
                             /* upgrades */
 
-                            if (data.player.stats.MainLobby.fishing.hasOwnProperty("enchants")) {
+                            if (data.player.stats.MainLobby.fishing?.enchants?.lure?.level) {
                               var upgradeLure = data.player.stats.MainLobby.fishing.enchants.lure.level;
                               $("#upgrade-lure").text(upgradeLure || "0");
                             } else {
@@ -553,7 +553,7 @@ DisplayName = data.player.playername;
                               $("#upgrade-vulcan").text("0");
                             }
 
-                            if (data.player.stats.MainLobby.fishing.enchants.hasOwnProperty("dumpster_diver")) {
+                            if (data.player.stats.MainLobby.fishing?.enchants?.dumpster_diver?.level) {
                               var upgradeDD = data.player.stats.MainLobby.fishing.enchants.dumpster_diver.level;
                               $("#upgrade-dd").text(upgradeDD || "0");
 
@@ -561,7 +561,7 @@ DisplayName = data.player.playername;
                               $("#upgrade-dd").text("0");
                             }
 
-                            if (data.player.stats.MainLobby.fishing.enchants.hasOwnProperty("mythical_hook")) {
+                            if (data.player.stats.MainLobby.fishing?.enchants?.hasOwnProperty("mythical_hook")) {
                               var upgradeHook = data.player.stats.MainLobby.fishing.enchants.mythical_hook.level;
                               $("#upgrade-hook").text(upgradeHook || "0");
                               
@@ -569,7 +569,7 @@ DisplayName = data.player.playername;
                               $("#upgrade-hook").text("0");
                             }
 
-                            if (data.player.stats.MainLobby.fishing.enchants.hasOwnProperty("herbivore")) {
+                            if (data.player.stats.MainLobby.fishing?.enchants?.hasOwnProperty("herbivore")) {
                               var upgradeHebi = data.player.stats.MainLobby.fishing.enchants.herbivore.level;
                               $("#upgrade-herbi").text(upgradeHebi || "0");
 
@@ -577,7 +577,7 @@ DisplayName = data.player.playername;
                               $("#upgrade-herbi").text("0");
                             }
 
-                            if (data.player.stats.MainLobby.fishing.enchants.hasOwnProperty("vulcans_blessing")) {
+                            if (data.player.stats.MainLobby.fishing?.enchants?.hasOwnProperty("vulcans_blessing")) {
                               var upgradeVulcan = data.player.stats.MainLobby.fishing.enchants.vulcans_blessing.level;
                               $("#upgrade-vulcan").text(upgradeVulcan || "0");
                             
@@ -587,7 +587,7 @@ DisplayName = data.player.playername;
 
                             /* special and weight */
 
-                            if (data.player.stats.MainLobby.fishing.orbs.hasOwnProperty("selene")) {
+                            if (data.player.stats.MainLobby.fishing?.orbs?.hasOwnProperty("selene")) {
                               var selene = data.player.stats.MainLobby.fishing.orbs.selene;
                               $("#selene").text(selene || "0");
                             
@@ -595,7 +595,7 @@ DisplayName = data.player.playername;
                               $("#selene").text("0");
                             }
 
-                            if (data.player.stats.MainLobby.fishing.orbs.weight.hasOwnProperty("selene")) {
+                            if (data.player.stats.MainLobby.fishing?.orbs?.weight.hasOwnProperty("selene")) {
                               var seleneweight = data.player.stats.MainLobby.fishing.orbs.weight.selene;
                               $("#selene-pers").text(seleneweight || "0");
                             
@@ -603,7 +603,7 @@ DisplayName = data.player.playername;
                               $("#selene-pers").text("0");
                             }
 
-                            if (data.player.stats.MainLobby.fishing.orbs.hasOwnProperty("helios")) {
+                            if (data.player.stats.MainLobby.fishing?.orbs?.hasOwnProperty("helios")) {
                               var helios = data.player.stats.MainLobby.fishing.orbs.helios;
                               $("#helios").text(helios || "0");
                             
@@ -611,7 +611,7 @@ DisplayName = data.player.playername;
                               $("#helios").text("0");
                             }
 
-                            if (data.player.stats.MainLobby.fishing.orbs.weight.hasOwnProperty("helios")) {
+                            if (data.player.stats.MainLobby.fishing?.orbs?.weight.hasOwnProperty("helios")) {
                               var heliosweight = data.player.stats.MainLobby.fishing.orbs.weight.helios;
                               $("#helios-pers").text(heliosweight || "0");
                             
@@ -619,7 +619,7 @@ DisplayName = data.player.playername;
                               $("#helios-pers").text("0");
                             }
 
-                            if (data.player.stats.MainLobby.fishing.orbs.weight.hasOwnProperty("nyx")) {
+                            if (data.player.stats.MainLobby.fishing?.orbs?.weight.hasOwnProperty("nyx")) {
                               var nyx = data.player.stats.MainLobby.fishing.orbs.nyx;
                               $("#nyx").text(nyx || "0");
                             
@@ -627,7 +627,7 @@ DisplayName = data.player.playername;
                               $("#nyx").text("0");
                             }
                             
-                            if (data.player.stats.MainLobby.fishing.orbs.weight.hasOwnProperty("nyx")) {
+                            if (data.player.stats.MainLobby.fishing?.orbs?.weight.hasOwnProperty("nyx")) {
                               var nyxweight = data.player.stats.MainLobby.fishing.orbs.weight.nyx;
                               $("#nyx-pers").text(nyxweight || "0");
                             
@@ -635,7 +635,7 @@ DisplayName = data.player.playername;
                               $("#nyx-pers").text("0");
                             }
 
-                            if (data.player.stats.MainLobby.fishing.orbs.weight.hasOwnProperty("aphrodite")) {
+                            if (data.player.stats.MainLobby.fishing?.orbs?.weight.hasOwnProperty("aphrodite")) {
                               var aphrodite = data.player.stats.MainLobby.fishing.orbs.aphrodite;
                               $("#aphrodite").text(aphrodite || "0");
                             
@@ -643,7 +643,7 @@ DisplayName = data.player.playername;
                               $("#aphrodite").text("0");
                             }
                             
-                            if (data.player.stats.MainLobby.fishing.orbs.weight.hasOwnProperty("aphrodite")) {
+                            if (data.player.stats.MainLobby.fishing?.orbs?.weight.hasOwnProperty("aphrodite")) {
                               var aphroditeweight = data.player.stats.MainLobby.fishing.orbs.weight.aphrodite;
                               $("#aphrodite-pers").text(aphroditeweight || "0");
                             
@@ -651,7 +651,7 @@ DisplayName = data.player.playername;
                               $("#aphrodite-pers").text("0");
                             }
 
-                            if (data.player.stats.MainLobby.fishing.orbs.weight.hasOwnProperty("zeus")) {
+                            if (data.player.stats.MainLobby.fishing?.orbs?.weight.hasOwnProperty("zeus")) {
                               var zeus = data.player.stats.MainLobby.fishing.orbs.zeus;
                               $("#zeus").text(zeus || "0");
                             
@@ -659,7 +659,7 @@ DisplayName = data.player.playername;
                               $("#zeus").text("0");
                             }
                             
-                            if (data.player.stats.MainLobby.fishing.orbs.weight.hasOwnProperty("zeus")) {
+                            if (data.player.stats.MainLobby.fishing?.orbs?.weight.hasOwnProperty("zeus")) {
                               var zeusweight = data.player.stats.MainLobby.fishing.orbs.weight.zeus;
                               $("#zeus-pers").text(zeusweight || "0");
                             
@@ -667,7 +667,7 @@ DisplayName = data.player.playername;
                               $("#zeus-pers").text("0");
                             }
 
-                            if (data.player.stats.MainLobby.fishing.orbs.weight.hasOwnProperty("archimedes")) {
+                            if (data.player.stats.MainLobby.fishing?.orbs?.weight.hasOwnProperty("archimedes")) {
                               var archimedes = data.player.stats.MainLobby.fishing.orbs.archimedes;
                               $("#archimedes").text(archimedes || "0");
                             
@@ -675,7 +675,7 @@ DisplayName = data.player.playername;
                               $("#archimedes").text("0");
                             }
                             
-                            if (data.player.stats.MainLobby.fishing.orbs.weight.hasOwnProperty("archimedes")) {
+                            if (data.player.stats.MainLobby.fishing?.orbs?.weight.hasOwnProperty("archimedes")) {
                               var archimedesweight = data.player.stats.MainLobby.fishing.orbs.weight.archimedes;
                               $("#archimedes-pers").text(archimedesweight || "0");
                             
@@ -683,20 +683,12 @@ DisplayName = data.player.playername;
                               $("#archimedes-pers").text("0");
                             }
 
-                            if (data.player.stats.MainLobby.fishing.orbs.weight.hasOwnProperty("hades")) {
+                            if (data.player.stats.MainLobby.fishing?.orbs?.weight.hasOwnProperty("hades")) {
                               var hades = data.player.stats.MainLobby.fishing.orbs.hades;
                               $("#hades").text(hades || "0");
                             
                             } else {
                               $("#hades").text("0");
-                            }
-                            
-                            if (data.player.stats.MainLobby.fishing.orbs.weight.hasOwnProperty("hades")) {
-                              var hadesweight = data.player.stats.MainLobby.fishing.orbs.weight.hades;
-                              $("#hades-pers").text(hadesweight || "0");
-                            
-                            } else {
-                              $("#hades-pers").text("0");
                             }
 
                             /* SPECIAL FISH */
