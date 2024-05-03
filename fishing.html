@@ -2,14 +2,23 @@
 <link rel="stylesheet" href="style.css">
 <html>
   <head>
+    <!-- Script -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jacquard+24&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400..900&family=Oswald&display=swap" rel="stylesheet">
+
+    <!-- ICON -->
     <link rel="icon" type="image/x-icon" href="https://static.wikia.nocookie.net/minecraft_gamepedia/images/7/7f/Fishing_Rod_JE2_BE2.png/">
+
+    <!-- idk -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous">
+
+    <!-- ICON -->
     <title>Main Lobby Fishing Stats</title>
   </head>
   <body>
@@ -19,6 +28,7 @@
 
         <p id="rank" class="oswald"></p><img id="skin" style="display: none;">
 
+        <!-- Fish stats -->
         <div id="content" class="maven-pro">Fishes <dev id="fish-count-water" class="fish-count-water"></dev> <dev id="fish-count-lava" class="fish-count-lava"></dev> <dev id="fish-count-ice" class="fish-count-ice"></dev></div>
         <div id="content" class="maven-pro">Treasures <dev id="treasures-water" class="treasures-water"></dev> <dev id="treasures-lava" class="treasures-lava"></dev> <dev id="treasures-ice" class="treasures-ice"></dev></div>
         <div id="content" class="maven-pro">Junk <dev id="junk-water" class="junk-water"></dev> <dev id="junk-lava" class="junk-lava"></dev> <dev id="junk-ice" class="junk-ice"></dev></div>
@@ -27,6 +37,7 @@
             <button id="submit" class="maven-pro">Serach</button>
             <div id="upgrades" class="maven-pro">
               <button class="maven-pro" id="upgrades-button">Upgrades</button>
+              <!-- Upgrades -->
               <ul id="upgrades-list">
                 <p style="margin-top: 0px; margin-bottom: 0px; color: rgb(209, 43, 153); ">Lure <dev id="upgrade-lure" class="upgrade-lure" style="color: #000000;"></p>
                 <p style="margin-top: 5px; margin-bottom: 0px; color: brown; ">Dumpster Diver <dev id="upgrade-dd" class="upgrade-dd" style="color: #000000;"></p>
@@ -35,6 +46,7 @@
                 <p style="margin-top: 5px; margin-bottom: 0px; color: red; ">Vulcans Blessing <dev id="upgrade-vulcan" class="upgrade-vulcan" style="color: #000000;"></p>
               </ul>
               <button class="maven-pro" id="upgrades-button2">Mythical Fish</button>
+              <!-- Mythical Fish -->
               <ul id="upgrades-list2">
                 <p style="margin-top: 0px; margin-bottom: 0px; color: yellow; ">Selene <span id="selene" class="selene" style="color: #000000;"></span> (<span id="selene-pers" class="selene-pers" style="color: #000000;"></span> kg)</p>
                 <p style="margin-top: 0px; margin-bottom: 0px; color: yellow; ">Helios <span id="helios" class="helios" style="color: #000000;"></span> (<span id="helios-pers" class="helios-pers" style="color: #000000;"></span> kg)</p>
@@ -45,6 +57,7 @@
                 <p style="margin-top: 0px; margin-bottom: 0px; color: darkmagenta; ">Hades <span id="hades" class="hades" style="color: #000000;"></span> (<span id="hades-pers" class="hades-pers" style="color: #000000;"></span> kg)</p>
               </ul>
 
+              <!-- Special Fish -->
               <button class="maven-pro" id="specialfish">Special Fish</button>
               <div class="popup" id="popup">
                 <div class="tooltip" id="popupcontent">
@@ -172,6 +185,7 @@
                   <p style="font-size: 8px;">Click anywhere to close!</p>
                 </div>
             </div>
+            <!-- Script for Popup -->
             <script> 
             document.getElementById('specialfish').addEventListener('click', function() {
               document.getElementById('popup').style.display = 'block';
@@ -185,6 +199,7 @@
 
             </div>
             
+            <!-- Script; Only one list can be open -->
             <script>
               $(document).ready(function() {
                 $("#upgrades-button").click(function() {
@@ -199,12 +214,13 @@
             </script>
 
 
-
+            <!-- Script for getting uuid and api data -->
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
             <script>
                 $(document).ready(function() {
                     const apiKey = "b3909a29-acb5-4910-a753-f3b18ad7bb41";
-                    
+            
+            /* Get uuid, skin and hypixel api data */        
 $("#submit").click(function() {
   const username = $("#username").val();
   const apiUrl = `https://playerdb.co/api/player/minecraft/${username}`;
@@ -380,6 +396,7 @@ DisplayName = data.player.playername;
         break;
     };
     
+                            /* Failsafe if player hasnt logged onto hypixel but exists */
                             if (data.hasOwnProperty("player")) {
                                 $("#fish-count-water").text(fishCountWater || "This player never logged onto hypixel.");
                                 $("#fish-count-lava").text("");
@@ -526,6 +543,7 @@ $("#festival_pufferfish_hat").text(String.fromCodePoint(0x274C));
 $("#mahi_mahi2").text(String.fromCodePoint(0x274C));
                             }
 
+                            /* Failsafe if player logged onto hypixel but doesnt have fishing stats */
                             if (data.player.stats.MainLobby?.hasOwnProperty("fishing")) {
                                 var fishCountWater = data.player.stats.MainLobby.fishing.stats.permanent.water.fish;
                                 $("#fish-count-water").text(fishCountWater || "This player has no fishing stats.");
@@ -603,6 +621,7 @@ $("#festival_pufferfish_hat").text(String.fromCodePoint(0x274C));
 $("#mahi_mahi2").text(String.fromCodePoint(0x274C));
                             }
 
+                            /* Fishing stats */
                             if (data.player.stats?.MainLobby?.fishing?.stats?.permanent?.hasOwnProperty("water")) {
                                 var fishCountWater = data.player.stats.MainLobby.fishing.stats.permanent.water.fish;
                                 $("#fish-count-water").text(fishCountWater || "0");
@@ -1119,7 +1138,7 @@ $("#mahi_mahi2").text(String.fromCodePoint(0x274C));
                     }
                 });
             </script>
-            <p class="oswald">Last Update: Added <span id="water-type">special fish</span>! (this was so painful)</p>
+            <p class="oswald">Last Update: Added <span id="water-type">special fish</span>! (halo peter)</p>
     </div>
 
   </body>
