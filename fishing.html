@@ -721,7 +721,7 @@ $("#mahi_mahi2").text(String.fromCodePoint(0x274C));
                               $("#selene").text("0");
                             }
 
-                            if (data.player.stats.MainLobby.fishing?.orbs?.weight.hasOwnProperty("selene")) {
+                            if (data.player.stats.MainLobby.fishing?.orbs?.weight?.hasOwnProperty("selene")) {
                               var seleneweight = data.player.stats.MainLobby.fishing.orbs.weight.selene;
                               $("#selene-pers").text(seleneweight || "0");
                             
@@ -737,7 +737,7 @@ $("#mahi_mahi2").text(String.fromCodePoint(0x274C));
                               $("#helios").text("0");
                             }
 
-                            if (data.player.stats.MainLobby.fishing?.orbs?.weight.hasOwnProperty("helios")) {
+                            if (data.player.stats.MainLobby.fishing?.orbs?.weight?.hasOwnProperty("helios")) {
                               var heliosweight = data.player.stats.MainLobby.fishing.orbs.weight.helios;
                               $("#helios-pers").text(heliosweight || "0");
                             
@@ -745,7 +745,7 @@ $("#mahi_mahi2").text(String.fromCodePoint(0x274C));
                               $("#helios-pers").text("0");
                             }
 
-                            if (data.player.stats.MainLobby.fishing?.orbs?.weight.hasOwnProperty("nyx")) {
+                            if (data.player.stats.MainLobby.fishing?.orbs?.hasOwnProperty("nyx")) {
                               var nyx = data.player.stats.MainLobby.fishing.orbs.nyx;
                               $("#nyx").text(nyx || "0");
                             
@@ -753,7 +753,7 @@ $("#mahi_mahi2").text(String.fromCodePoint(0x274C));
                               $("#nyx").text("0");
                             }
                             
-                            if (data.player.stats.MainLobby.fishing?.orbs?.weight.hasOwnProperty("nyx")) {
+                            if (data.player.stats.MainLobby.fishing?.orbs?.weight?.hasOwnProperty("nyx")) {
                               var nyxweight = data.player.stats.MainLobby.fishing.orbs.weight.nyx;
                               $("#nyx-pers").text(nyxweight || "0");
                             
@@ -761,7 +761,7 @@ $("#mahi_mahi2").text(String.fromCodePoint(0x274C));
                               $("#nyx-pers").text("0");
                             }
 
-                            if (data.player.stats.MainLobby.fishing?.orbs?.weight.hasOwnProperty("aphrodite")) {
+                            if (data.player.stats.MainLobby.fishing?.orbs?.hasOwnProperty("aphrodite")) {
                               var aphrodite = data.player.stats.MainLobby.fishing.orbs.aphrodite;
                               $("#aphrodite").text(aphrodite || "0");
                             
@@ -769,7 +769,7 @@ $("#mahi_mahi2").text(String.fromCodePoint(0x274C));
                               $("#aphrodite").text("0");
                             }
                             
-                            if (data.player.stats.MainLobby.fishing?.orbs?.weight.hasOwnProperty("aphrodite")) {
+                            if (data.player.stats.MainLobby.fishing?.orbs?.weight?.hasOwnProperty("aphrodite")) {
                               var aphroditeweight = data.player.stats.MainLobby.fishing.orbs.weight.aphrodite;
                               $("#aphrodite-pers").text(aphroditeweight || "0");
                             
@@ -777,7 +777,7 @@ $("#mahi_mahi2").text(String.fromCodePoint(0x274C));
                               $("#aphrodite-pers").text("0");
                             }
 
-                            if (data.player.stats.MainLobby.fishing?.orbs?.weight.hasOwnProperty("zeus")) {
+                            if (data.player.stats.MainLobby.fishing?.orbs?.hasOwnProperty("zeus")) {
                               var zeus = data.player.stats.MainLobby.fishing.orbs.zeus;
                               $("#zeus").text(zeus || "0");
                             
@@ -785,7 +785,7 @@ $("#mahi_mahi2").text(String.fromCodePoint(0x274C));
                               $("#zeus").text("0");
                             }
                             
-                            if (data.player.stats.MainLobby.fishing?.orbs?.weight.hasOwnProperty("zeus")) {
+                            if (data.player.stats.MainLobby.fishing?.orbs?.weight?.hasOwnProperty("zeus")) {
                               var zeusweight = data.player.stats.MainLobby.fishing.orbs.weight.zeus;
                               $("#zeus-pers").text(zeusweight || "0");
                             
@@ -793,7 +793,7 @@ $("#mahi_mahi2").text(String.fromCodePoint(0x274C));
                               $("#zeus-pers").text("0");
                             }
 
-                            if (data.player.stats.MainLobby.fishing?.orbs?.weight.hasOwnProperty("archimedes")) {
+                            if (data.player.stats.MainLobby.fishing?.orbs?.hasOwnProperty("archimedes")) {
                               var archimedes = data.player.stats.MainLobby.fishing.orbs.archimedes;
                               $("#archimedes").text(archimedes || "0");
                             
@@ -801,7 +801,7 @@ $("#mahi_mahi2").text(String.fromCodePoint(0x274C));
                               $("#archimedes").text("0");
                             }
                             
-                            if (data.player.stats.MainLobby.fishing?.orbs?.weight.hasOwnProperty("archimedes")) {
+                            if (data.player.stats.MainLobby.fishing?.orbs?.weight?.hasOwnProperty("archimedes")) {
                               var archimedesweight = data.player.stats.MainLobby.fishing.orbs.weight.archimedes;
                               $("#archimedes-pers").text(archimedesweight || "0");
                             
@@ -809,12 +809,20 @@ $("#mahi_mahi2").text(String.fromCodePoint(0x274C));
                               $("#archimedes-pers").text("0");
                             }
 
-                            if (data.player.stats.MainLobby.fishing?.orbs?.weight.hasOwnProperty("hades")) {
+                            if (data.player.stats.MainLobby.fishing?.orbs?.hasOwnProperty("hades")) {
                               var hades = data.player.stats.MainLobby.fishing.orbs.hades;
                               $("#hades").text(hades || "0");
                             
                             } else {
                               $("#hades").text("0");
+                            }
+
+                            if (data.player.stats.MainLobby.fishing?.orbs?.weight?.hasOwnProperty("hades")) {
+                              var hadesweight = data.player.stats.MainLobby.fishing.orbs.weight.hades;
+                              $("#hades-pers").text(hadesweight || "0");
+                            
+                            } else {
+                              $("#hades-pers").text("0");
                             }
 
                             /* SPECIAL FISH */
