@@ -182,6 +182,18 @@
                     <span style="width: 50%; "> Puffer Emoji</span>
                     <span id="puffer_emoji" class="puffer_emoji"></span>
                   </p>
+                  <p style="margin-bottom: 5px; margin-top: 0px; display: flex; justify-content: space-between;">
+                    <span style="width: 50%; ">Fish Monger Helmet</span>
+                    <span id="fm_helm" class="pile_of_sand" style="padding-right: 15px;"></span>
+                    <span style="width: 50%; "> Fish Monger Chestplate</span>
+                    <span id="fm_cp" class="puffer_emoji"></span>
+                  </p>
+                  <p style="margin-bottom: 5px; margin-top: 0px; display: flex; justify-content: space-between;">
+                    <span style="width: 50%; ">Fish Monger Leggings</span>
+                    <span id="fm_leg" class="pile_of_sand" style="padding-right: 15px;"></span>
+                    <span style="width: 50%; "> Fish Monger Boots</span>
+                    <span id="fm_boot" class="puffer_emoji"></span>
+                  </p>
                   <p style="font-size: 8px;">Click anywhere to close!</p>
                 </div>
             </div>
@@ -1132,6 +1144,34 @@ $("#mahi_mahi2").text(String.fromCodePoint(0x274C));
                                 $("#mahi_mahi2").text(String.fromCodePoint(0x2705) || "0");
                             } else {
                                 $("#mahi_mahi2").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("fish_monger_suit_helmet")) {
+                                var fm_helm = data.player.stats.MainLobby.fishing.special_fish.fish_monger_suit_helmet;
+                                $("#fm_helm").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#fm_helm").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("fish_monger_suit_chestplate")) {
+                                var fm_cp = data.player.stats.MainLobby.fishing.special_fish.fish_monger_suit_chestplate;
+                                $("#fm_cp").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#fm_cp").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("fish_monger_suit_leggings")) {
+                                var fm_leg = data.player.stats.MainLobby.fishing.special_fish.fish_monger_suit_leggings;
+                                $("#fm_leg").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#fm_leg").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("fish_monger_suit_boots")) {
+                                var fm_boot = data.player.stats.MainLobby.fishing.special_fish.fish_monger_suit_boots;
+                                $("#fm_boot").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#fm_boot").text(String.fromCodePoint(0x274C));
                             }
 
                             var DisplayName = data.player.playername;
