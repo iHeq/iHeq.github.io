@@ -242,7 +242,7 @@ $("#submit").click(function() {
     const uuid = data.data.player.id;
     const fishingApiUrl = `https://api.hypixel.net/player?key=${apiKey}&uuid=${uuid}`;
     fetchFishingStats(fishingApiUrl);
-    const SKINURL = `https://minotar.net/armor/body/${uuid}`;
+    const SKINURL = `https://visage.surgeplay.com/full/512/${uuid}`;
     const skinImage = document.getElementById('skin');
     skinImage.addEventListener('load', function() {
       if (skinImage.naturalWidth > 0) {

@@ -50,13 +50,14 @@ body {
 
 #rank {
   font-size: 18px;
+  margin: 5px;
   font-weight: bold;
   align-self: center;
 }
 
 #skin {
-  height: 120px;
-  width: 60px;
+  height: 18%;
+  width: 18%;
   align-self: center;
   margin-bottom: 10px;
 }
