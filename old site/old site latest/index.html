@@ -1,94 +1,221 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <!-- Meta Tags -->
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="https://mc-heads.net/avatar/bruteforce">
-    
-    <!-- Title -->
-    <title>🧊 ・ ui</title>
-
-    <!-- Css -->
-    <link rel="stylesheet" href="assets/css/style.css">
-
-    <!-- Javascript -->
-    
-    
-    <!-- Fonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous">
-
-    <video autoplay loop muted>
-        <source src="./assets/vid/background.mp4" type="video/mp4">
-    </video>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="devsheet.css">
+<link rel="icon" type="image/x-icon" href="https://mc-heads.net/avatar/bruteforce">
+<title>ui</title>
 </head>
-<body>
+<body style="font-family: Inter Tight; background-color: #2f262f;">
+
+<br>
+<div class="center huge rainbow-animated wordmark unselectable" onclick="addI()" id="wordmark" display="block"><b>jiqu</b><sub>.lol</sub></div>
+
+
+
+
+<p class="center big" style="color: var(--brosy)"><i>hi my name is ui, here's what i've made</i></p>
+
+<div class="link" style="background-image: url(./img/pit_wiki.png); background-size: cover">
+    <div class="blur" id="blur_1">
+    <span class="link-container">
+    <span class="link-title bold smallcaps">Duels Botting Tracker</span><br>
+    <span class="link-subtitle" style="font-weight: 500"><span style="color: var(--byellow);">Currently private</span> </span><br>
+    <span class="link-subtitle italic">Tracker discord bot extension, utilized for botting in hypixel duels</span>
+    </span>
+    <a href="#" target="_blank"><div class="circle center bold" id="circle_1">-></div></a>
+</div>
+</div>
+
+<br><br>
+
+<div class="link" style="background-image: url(./img/brookeafk_com.png); background-size: cover">
+    <div class="blur" id="blur_2">
+    <span class="link-container">
+    <span class="link-title bold smallcaps">Hypixel Pit Bot</span><br>
+    <span class="link-subtitle" style="font-weight: 500"><span style="color: var(--byellow)">Currently private</span> </span><br>
+    <span class="link-subtitle italic">Just a hypixel pit autogrinder, discord webhook integration.</span>
+    </span>
+    <a href="#" target="_blank"><div class="circle center bold" id="circle_2">-></div></a>
+</div>
+</div>
+
+<br><br>
+
+<div class="link" style="background-image: url(./img/pit_player_tracker.png); background-size: cover">
+  <div class="blur" id="blur_3">
+  <span class="link-container">
+  <span class="link-title bold smallcaps">Jiqu.lol Server Network</span><br>
+  <span class="new link-subtitle">ONLINE</span><br>
+  <span class="link-subtitle italic">A server network consisting of a lobby and three minigames, linked with bungeecord.</span>
+  </span>
+  <a href="https://mcsrvstat.us/server/jiqu.lol" target="_blank"><div class="circle center bold" id="circle_3">-></div></a>
+</div>
+</div>
+
+<br><br>
+
+<div class="link" style="background-image: url(./img/pitmd.png); background-size: cover">
+  <div class="blur" id="blur_4"> 
+  <span class="link-container">
+  <span class="link-title bold smallcaps">soon</span><br>
+  <span class="link-subtitle" style="font-weight: 500"><span style="color: var(--byellow)">&mdash;</span> </span><br>
+  <span class="link-subtitle italic">&mdash;</span>
+  </span>
+  <a href="#" target="_blank"><div class="circle center bold" id="circle_4">-></div></a>
+</div>
+</div>
+
+<br><br>
+
+<p class="center medium" style="color: var(--brosy)">also contributed code to</p>
+
+<div class="center">
+<a target="_blank"><img src="./img/laoder.svg" width="20%" class="logos"></a>
+</div>
+
+
+
+<p class="center medium" style="color: var(--brosy)">contact me! (please)</p>
+<div class="center">
+  <a href="https://github.com/iheq" target="_blank"><img src="./img/github-mark-white.svg" width="3%" class="logos"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+  <a id="discordlogo" onclick="showDiscordId()"><img src="./img/discord-mark-white.svg" width="3%" class="logos" style="position: relative; bottom: 4px"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+  <!--a href="mailto:support@hypixel.net" target="_blank"><img src="./img/mail.svg" width="3%" class="logos"></a&nbsp;&nbsp;&nbsp;&nbsp;-->
+  <a href="https://namemc.com/bruteforce" target="_blank"><img src="./img/NameMC_logo.svg" width="3%" class="logos"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+
+</div>
+
+<footer class="center medium" style="color: var(--brosy)">
+  <p>original site by brookeafk</p>
+</footer>
+
+<br>
+
+<div class="cursor"></div>
+<div class="insidecursor"></div>
+
+<script>
+    var name = "jiqu"
+    var accomplishments = 4; // haha that's not that many lol
+    var clicks = 0;
+    function addI() {
+        clicks += 1;
+        if(name == "jiqu") {
+            name = "jiqu"
+            document.documentElement.style.cssText = "--richter: 0";
+        }
+            name = name.slice(0, 4) + "u" + name.slice(4);
+            document.getElementById("wordmark").classList.add('shake')
     
-    <header>
-        <nav>
-            <div class="header_logo">
-                <img src="assets/imgs/headerimg.jpg" alt="" srcset="">
-            </div>
-            <div class="header_links">
-                <ul class="nav_links">
-                    <!--<li class="nav_link"><a href="#">Home</a></li>-->
+        document.getElementById("wordmark").classList.add('hop');
+        document.getElementById("wordmark").innerHTML = `<b>` + name + `</b><sub>.lol</sub>`;
+        document.documentElement.style.cssText = "--richter: " + clicks;
+        document.getElementById("wordmark").classList.remove('hop');
+    }
 
-                    
-                    <div class="count-display">
-                        <!-- The count will be displayed here -->
-                     </div>
+        document.getElementById('circle_1').addEventListener('mouseover', function() {  // i tried for like 1 hour to get this into a concise for loop and just kinda gave up
+            document.getElementById('blur_1').style.backdropFilter = "blur(14px)"
+        });
+        document.getElementById('circle_1').addEventListener('mouseleave', function() {
+            document.getElementById('blur_1').style.backdropFilter = "blur(4px)"
+        });
+        document.getElementById('circle_2').addEventListener('mouseover', function() {
+            document.getElementById('blur_2').style.backdropFilter = "blur(14px)"
+        });
+        document.getElementById('circle_2').addEventListener('mouseleave', function() {
+            document.getElementById('blur_2').style.backdropFilter = "blur(4px)"
+        });
+        document.getElementById('circle_3').addEventListener('mouseover', function() {
+            document.getElementById('blur_3').style.backdropFilter = "blur(14px)"
+        });
+        document.getElementById('circle_3').addEventListener('mouseleave', function() {
+            document.getElementById('blur_3').style.backdropFilter = "blur(4px)"
+        });
+        document.getElementById('circle_4').addEventListener('mouseover', function() {
+            document.getElementById('blur_4').style.backdropFilter = "blur(14px)"
+        });
+        document.getElementById('circle_4').addEventListener('mouseleave', function() {
+            document.getElementById('blur_4').style.backdropFilter = "blur(4px)"
+        });
 
-                     <script>
-                        window.onload = function() {
-                           let count;
-                           if (localStorage.getItem('viewCount') === null) {
-                             count = 1;
-                           } else {
-                             count = parseInt(localStorage.getItem('viewCount')) + 1;
-                           }
-                           localStorage.setItem('viewCount', count);
-                       
-                           // Display the count on the webpage
-                           document.querySelector('.count-display').textContent = count;
-                        };
-                       </script>
+        function showDiscordId() {
+          document.getElementById("discordlogo").innerText = "@l77l";
+          document.getElementById("discordlogo").style.bottom = "12px";
+          document.getElementById("discordlogo").style.position = "relative";
+        }
+
+  /* 
+
+  thank you to Nick Tenebruso on CodePen for portions of the cursor code!
+
+  Copyright (c) 2022 by Nick (https://codepen.io/ntenebruso/pen/QWLzVjY)
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+  associated documentation files (the "Software"), to deal in the Software without restriction, 
+  including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+  and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+  subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in all copies or substantial
+  portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+  LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+  NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+  WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  
+  */
 
 
-                    <!--<li class="nav_link"><a href="#work">work</a></li> -->
-                    <!-- <li class="nav_link"><a href="#">Repos</a></li> -->
-                </ul>
-            </div>
-        </nav>
-    </header>
+var cursor = document.querySelector('.cursor');
+var cursorinner = document.querySelector('.insidecursor');
+var a = document.querySelectorAll('a');
+var logo = document.querySelectorAll('#wordmark');
 
-    <section class="main">
-        <img src="assets/imgs/profilepicture.png" alt="" srcset="">
-        <span>ui</span>
-        <p>Development and other fun stuff.</p>
-        <ul>
-            <li><a target="_blank" href="https://github.com/iHeq"><i class="fab fa-github"></i></a></li>
-            <li><a target="_blank" href="https://www.youtube.com/@lwlw"><i class="fab fa-youtube"></i></a></li>
-            <li><a target="_blank" href="https://t.me/leakufy"><i class="fab fa-telegram"></i></a></li>
-            <svg viewBox="-8 -8 16 16" class="h-7 w-7 text-[#020101] duration-300 hover:scale-110 hover:text-[#020101]" shape-rendering="crispEdges" width="32" height="32" onclick="window.open('https://namemc.com/bruteforce', '_blank')">
-            <path d="M-5-5L+3-5L+3-3L+5-3L+5+5L+3+5L+3-3L-3-3L-3+5L-5+5" style="fill: rgb(166, 168, 184);">
-            </svg>
+document.addEventListener('mousemove', function(e){
+  var x = e.clientX;
+  var y = e.clientY;
+  cursor.style.transform = `translate3d(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%), 0)`
+});
 
-            <div class="tooltip"><li><a target="_blank" title="l77l"><i class="fab fa-discord"></i></a></li>
-                <span class="tooltiptext">l77l</span>
-            </div>
+document.addEventListener('mousemove', function(e){
+  var x = e.clientX;
+  var y = e.clientY;
+  cursorinner.style.left = x + 'px';
+  cursorinner.style.top = y + 'px';
+});
 
-        </ul>
-        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5K9tfeoiztw94dyWzF39jq?utm_source=generator&theme=0" width="350" height="125" frameBorder="0" allowfullscreen="false" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-    </section>
+document.addEventListener('mousedown', function(){
+  cursor.classList.add('click');
+  cursor.classList.add('whiteoutline');
+  cursorinner.classList.add('cursorinnerhover')
+});
 
-    <section class="work">
-        <span class="spantitle">My Projects</span>
-    <div class='parent'>
-        <div class='child'><span class="span1">This Website</span><p>The website you are currently on is a project of mine. <br></br>It took about two days to make and is opensource for everyone to download on my Git (please credit me in the footer when using). The site is fully written in HTML, CSS and JavaScript. <br></br>The blueprint for this website was made by “kanekiweb” on GitHub. </p></div>
-        <div class='child'><span class="span1">Duels Tracker</span><p>In the Summer of 2023 I’ve created a so called “Tracker” which, in my case, tracks a players duel stats in a specific gamemode utilizing the public Hypixel API. The program broadcasts the stats of the given player in a Discord server. <br></br>The program can be also used to terminate the Minecraft process while botting, simply by clicking a button in the Discord message sent by the program. <br></br>The project is currently private and may or may not be released soon.</p></div>
-      </div>
-    </section>
+document.addEventListener('mouseup', function(){
+  cursor.classList.remove('click')
+  cursor.classList.remove('whiteoutline');
+  cursorinner.classList.remove('cursorinnerhover')
+});
 
+a.forEach(item => {
+  item.addEventListener('mouseover', () => {
+    cursor.classList.add('hover');
+});
+  item.addEventListener('mouseleave', () => {
+    cursor.classList.remove('hover');
+  });
+})
+
+logo.forEach(item => {
+  item.addEventListener('mouseover', () => {
+    cursor.classList.add('hover');
+  });
+  item.addEventListener('mouseleave', () => {
+    cursor.classList.remove('hover');
+  });
+})
+</script>
 </body>
-</html> 
