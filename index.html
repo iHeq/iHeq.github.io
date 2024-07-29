@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< Updated upstream
 <html lang="en">
 <head>
 <<<<<<< HEAD
@@ -8,11 +9,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://mc-heads.net/avatar/bruteforce">
 =======
+=======
+<html>
+<head>
+>>>>>>> Stashed changes
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="devsheet.css">
+<<<<<<< Updated upstream
 <link rel="icon" type="image/x-icon" href="https://mc-heads.net/avatar/trapped">
+=======
+<link rel="icon" type="image/x-icon" href="https://mc-heads.net/avatar/bruteforce">
+>>>>>>> Stashed changes
 <title>ui</title>
 </head>
 <body style="font-family: Inter Tight; background-color: #2f262f;">
@@ -90,7 +99,11 @@
   <a href="https://github.com/iheq" target="_blank"><img src="./img/github-mark-white.svg" width="3%" class="logos"></a>&nbsp;&nbsp;&nbsp;&nbsp;
   <a id="discordlogo" onclick="showDiscordId()"><img src="./img/discord-mark-white.svg" width="3%" class="logos" style="position: relative; bottom: 4px"></a>&nbsp;&nbsp;&nbsp;&nbsp;
   <!--a href="mailto:support@hypixel.net" target="_blank"><img src="./img/mail.svg" width="3%" class="logos"></a&nbsp;&nbsp;&nbsp;&nbsp;-->
+<<<<<<< Updated upstream
   <a href="https://namemc.com/trapped" target="_blank"><img src="./img/NameMC_logo.svg" width="3%" class="logos"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+=======
+  <a href="https://namemc.com/bruteforce" target="_blank"><img src="./img/NameMC_logo.svg" width="3%" class="logos"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+>>>>>>> Stashed changes
 
 </div>
 
@@ -115,6 +128,7 @@
         }
             name = name.slice(0, 4) + "u" + name.slice(4);
             document.getElementById("wordmark").classList.add('shake')
+<<<<<<< Updated upstream
 >>>>>>> fb9d222356f6810702ee6fd3570c4726095dc9a4
     
     <!-- Title -->
@@ -202,3 +216,116 @@
 
 </body>
 </html> 
+=======
+    
+        document.getElementById("wordmark").classList.add('hop');
+        document.getElementById("wordmark").innerHTML = `<b>` + name + `</b><sub>.lol</sub>`;
+        document.documentElement.style.cssText = "--richter: " + clicks;
+        document.getElementById("wordmark").classList.remove('hop');
+    }
+
+        document.getElementById('circle_1').addEventListener('mouseover', function() {  // i tried for like 1 hour to get this into a concise for loop and just kinda gave up
+            document.getElementById('blur_1').style.backdropFilter = "blur(14px)"
+        });
+        document.getElementById('circle_1').addEventListener('mouseleave', function() {
+            document.getElementById('blur_1').style.backdropFilter = "blur(4px)"
+        });
+        document.getElementById('circle_2').addEventListener('mouseover', function() {
+            document.getElementById('blur_2').style.backdropFilter = "blur(14px)"
+        });
+        document.getElementById('circle_2').addEventListener('mouseleave', function() {
+            document.getElementById('blur_2').style.backdropFilter = "blur(4px)"
+        });
+        document.getElementById('circle_3').addEventListener('mouseover', function() {
+            document.getElementById('blur_3').style.backdropFilter = "blur(14px)"
+        });
+        document.getElementById('circle_3').addEventListener('mouseleave', function() {
+            document.getElementById('blur_3').style.backdropFilter = "blur(4px)"
+        });
+        document.getElementById('circle_4').addEventListener('mouseover', function() {
+            document.getElementById('blur_4').style.backdropFilter = "blur(14px)"
+        });
+        document.getElementById('circle_4').addEventListener('mouseleave', function() {
+            document.getElementById('blur_4').style.backdropFilter = "blur(4px)"
+        });
+
+        function showDiscordId() {
+          document.getElementById("discordlogo").innerText = "@l77l";
+          document.getElementById("discordlogo").style.bottom = "12px";
+          document.getElementById("discordlogo").style.position = "relative";
+        }
+
+  /* 
+
+  thank you to Nick Tenebruso on CodePen for portions of the cursor code!
+
+  Copyright (c) 2022 by Nick (https://codepen.io/ntenebruso/pen/QWLzVjY)
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+  associated documentation files (the "Software"), to deal in the Software without restriction, 
+  including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+  and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+  subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in all copies or substantial
+  portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+  LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+  NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+  WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  
+  */
+
+
+var cursor = document.querySelector('.cursor');
+var cursorinner = document.querySelector('.insidecursor');
+var a = document.querySelectorAll('a');
+var logo = document.querySelectorAll('#wordmark');
+
+document.addEventListener('mousemove', function(e){
+  var x = e.clientX;
+  var y = e.clientY;
+  cursor.style.transform = `translate3d(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%), 0)`
+});
+
+document.addEventListener('mousemove', function(e){
+  var x = e.clientX;
+  var y = e.clientY;
+  cursorinner.style.left = x + 'px';
+  cursorinner.style.top = y + 'px';
+});
+
+document.addEventListener('mousedown', function(){
+  cursor.classList.add('click');
+  cursor.classList.add('whiteoutline');
+  cursorinner.classList.add('cursorinnerhover')
+});
+
+document.addEventListener('mouseup', function(){
+  cursor.classList.remove('click')
+  cursor.classList.remove('whiteoutline');
+  cursorinner.classList.remove('cursorinnerhover')
+});
+
+a.forEach(item => {
+  item.addEventListener('mouseover', () => {
+    cursor.classList.add('hover');
+});
+  item.addEventListener('mouseleave', () => {
+    cursor.classList.remove('hover');
+  });
+})
+
+logo.forEach(item => {
+  item.addEventListener('mouseover', () => {
+    cursor.classList.add('hover');
+  });
+  item.addEventListener('mouseleave', () => {
+    cursor.classList.remove('hover');
+  });
+})
+</script>
+</body>
+>>>>>>> Stashed changes
