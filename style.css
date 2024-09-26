@@ -92,9 +92,11 @@ body {
 }
 
 #quote {
-    font-size: 8px;
+    display: block;
+    margin-bottom: -10px;
+    margin-top: -30px;
+    font-size: 10px;
     font-family :  'MS Gothic', 'ＭＳ ゴシック' , 'MS ゴシック' , Msgothic, 'ヒラギノ明朝 ProN', sans-serif;
-    margin: 0;
 }
 
 #text {
