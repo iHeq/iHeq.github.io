@@ -1,5 +1,4 @@
-// script.js
-
+// audio
 let audio = new Audio('audio.mp3');
 audio.loop = true;
 
@@ -9,7 +8,7 @@ document.addEventListener('click', () => {
     audio.play();
 });
 
-// script.js
+// flashy text
 let texts = ['musician.', 'developer.', 'student.'];
 let index = 0;
 let textElement = document.getElementById('text');
@@ -24,6 +23,3 @@ function changeText() {
 }
 
 setInterval(changeText, 2000);
-
-
-

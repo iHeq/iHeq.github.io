@@ -44,7 +44,7 @@ body {
 
 .content img {
     scale: 75%;
-    width: 50%;
+    max-width: 750px;
     object-fit: cover;
     text-align: left;
 }
