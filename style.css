@@ -40,6 +40,8 @@ body {
     transition: opacity 1s;
     font-size: 0;
     object-fit: cover;
+    background-color: black;
+    color: white;
 }
 
 .content img {
