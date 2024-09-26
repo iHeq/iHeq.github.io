@@ -23,3 +23,8 @@ function changeText() {
 }
 
 setInterval(changeText, 2000);
+
+const text = document.getElementById('animated-text').textContent;
+const letters = text.split('');
+const html = letters.map(letter => `<span>${letter}</span>`).join('');
+document.getElementById('animated-text').innerHTML = html;
