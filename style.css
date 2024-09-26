@@ -40,7 +40,8 @@ body {
     transition: opacity 1s;
     font-size: 0;
     object-fit: cover;
-    background-color: black;
+    background-image: url("background.png");
+    background-size: cover;
     color: white;
 }
 
