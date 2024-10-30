@@ -9,7 +9,7 @@ body {
 #background-container {
     width: 100%;
     height: 100vh;
-    background-image: url('bg1.png');
+    background-image: url('img/bg1.png');
     background-size: cover;
     background-position: center;
     animation: background-switch 2s infinite;
@@ -17,13 +17,13 @@ body {
 
 @keyframes background-switch {
     0% {
-        background-image: url('bg1.png');
+        background-image: url('img/bg1.png');
     }
     50% {
-        background-image: url('bg2.png');
+        background-image: url('img/bg2.png');
     }
     100% {
-        background-image: url('bg1.png');
+        background-image: url('img/bg1.png');
     }
 }
 
