@@ -1,5 +1,5 @@
 // audio
-let audio = new Audio('audio.mp3');
+let audio = new Audio('sound/audio.mp3');
 audio.loop = true;
 
 document.addEventListener('click', () => {
