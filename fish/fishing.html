@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="style.css">
+<html>
+  <head>
+    <!-- Script -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jacquard+24&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400..900&family=Oswald&display=swap" rel="stylesheet">
+
+    <!-- ICON -->
+    <link rel="icon" type="image/x-icon" href="https://static.wikia.nocookie.net/minecraft_gamepedia/images/7/7f/Fishing_Rod_JE2_BE2.png/">
+
+    <!-- idk -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous">
+
+    <!-- ICON -->
+    <title>Main Lobby Fishing Stats</title>
+  </head>
+  <body>
+    <div id="container">
+        
+        <div id="title" class="oswald">Main Lobby Fishing Stats <a target="_blank" href="https://github.com/iHeq/iHeq.github.io/tree/main/fish"><i class="fab fa-github"></i></a></div>
+
+        <p id="rank" class="oswald"></p><img id="skin" style="display: none;">
+
+        <!-- Fish stats -->
+        <div id="content" class="maven-pro">Fishes <dev id="fish-count-water" class="fish-count-water"></dev> <dev id="fish-count-lava" class="fish-count-lava"></dev> <dev id="fish-count-ice" class="fish-count-ice"></dev></div>
+        <div id="content" class="maven-pro">Treasures <dev id="treasures-water" class="treasures-water"></dev> <dev id="treasures-lava" class="treasures-lava"></dev> <dev id="treasures-ice" class="treasures-ice"></dev></div>
+        <div id="content" class="maven-pro">Junk <dev id="junk-water" class="junk-water"></dev> <dev id="junk-lava" class="junk-lava"></dev> <dev id="junk-ice" class="junk-ice"></dev></div>
+
+            <input type="text" id="username" placeholder="Enter username" class="maven-pro">
+            <button id="submit" class="maven-pro">Serach</button>
+            <div id="upgrades" class="maven-pro">
+              <button class="maven-pro" id="upgrades-button">Upgrades</button>
+              <!-- Upgrades -->
+              <ul id="upgrades-list">
+                <p style="margin-top: 0px; margin-bottom: 0px; color: rgb(209, 43, 153); ">Lure <dev id="upgrade-lure" class="upgrade-lure" style="color: #000000;"></p>
+                <p style="margin-top: 5px; margin-bottom: 0px; color: brown; ">Dumpster Diver <dev id="upgrade-dd" class="upgrade-dd" style="color: #000000;"></p>
+                <p style="margin-top: 5px; margin-bottom: 0px; color: yellow; ">Mythical Hook <dev id="upgrade-hook" class="upgrade-hook" style="color: #000000;"></p>
+                <p style="margin-top: 5px; margin-bottom: 0px; color: greenyellow; ">Herbivore <dev id="upgrade-herbi" class="upgrade-herbi" style="color: #000000;"></p>
+                <p style="margin-top: 5px; margin-bottom: 0px; color: red; ">Vulcans Blessing <dev id="upgrade-vulcan" class="upgrade-vulcan" style="color: #000000;"></p>
+              </ul>
+              <button class="maven-pro" id="upgrades-button2">Mythical Fish</button>
+              <!-- Mythical Fish -->
+              <ul id="upgrades-list2">
+                <p style="margin-top: 0px; margin-bottom: 0px; color: yellow; ">Selene <span id="selene" class="selene" style="color: #000000;"></span> (<span id="selene-pers" class="selene-pers" style="color: #000000;"></span> kg)</p>
+                <p style="margin-top: 0px; margin-bottom: 0px; color: yellow; ">Helios <span id="helios" class="helios" style="color: #000000;"></span> (<span id="helios-pers" class="helios-pers" style="color: #000000;"></span> kg)</p>
+                <p style="margin-top: 0px; margin-bottom: 0px; color: green; ">Nyx <span id="nyx" class="nyx" style="color: #000000;"></span> (<span id="nyx-pers" class="nyx-pers" style="color: #000000;"></span> kg)</p>
+                <p style="margin-top: 0px; margin-bottom: 0px; color: green; ">Aphrodite <span id="aphrodite" class="aphrodite" style="color: #000000;"></span> (<span id="aphrodite-pers" class="aphrodite-pers" style="color: #000000;"></span> kg)</p>
+                <p style="margin-top: 0px; margin-bottom: 0px; color: darkblue; ">Zeus <span id="zeus" class="zeus" style="color: #000000;"></span> (<span id="zeus-pers" class="zeus-pers" style="color: #000000;"></span> kg)</p>
+                <p style="margin-top: 0px; margin-bottom: 0px; color: darkcyan; ">Archimedes <span id="archimedes" class="archimedes" style="color: #000000;"></span> (<span id="archimedes-pers" class="archimedes-pers" style="color: #000000;"></span> kg)</p>
+                <p style="margin-top: 0px; margin-bottom: 0px; color: darkmagenta; ">Hades <span id="hades" class="hades" style="color: #000000;"></span> (<span id="hades-pers" class="hades-pers" style="color: #000000;"></span> kg)</p>
+              </ul>
+
+              <!-- Special Fish -->
+              <button class="maven-pro" id="specialfish">Special Fish</button>
+              <div class="popup" id="popup">
+                <div class="tooltip" id="popupcontent">
+                  <p style="font-weight: bold; font-size: 24px; margin-bottom: 10px; margin-top: 0px;">Special Fish</p>
+                  <p style="margin-bottom: 5px; margin-top: 0px; display: flex; justify-content: space-between;">
+                    <span style="width: 50%; ">Carrot</span>
+                    <span id="carrot" class="carrot" style="padding-right: 15px;"></span>
+                    <span style="width: 50%;"> Pumpkin Pie</span>
+                    <span id="pumpkin_pie" class="pumpkin_pie"></span>
+                  </p>
+                  <p style="margin-bottom: 5px; margin-top: 0px; display: flex; justify-content: space-between;">
+                    <span style="width: 50%; ">Angler</span>
+                    <span id="angler" class="angler" style="padding-right: 15px;"></span>
+                    <span style="width: 50%; "> Pumpkin Spice Latte</span>
+                    <span id="pumpkin_spice_latte" class="pumpkin_spice_latte"></span>
+                  </p>
+                  <p style="margin-bottom: 5px; margin-top: 0px; display: flex; justify-content: space-between;">
+                    <span style="width: 50%; ">Cherry Blossom</span>
+                    <span id="cherry_blossom" class="cherry_blossom" style="padding-right: 15px;"></span>
+                    <span style="width: 50%; "> Raw Ham</span>
+                    <span id="raw_ham" class="raw_ham"></span>
+                  </p>
+                  <p style="margin-bottom: 5px; margin-top: 0px; display: flex; justify-content: space-between;">
+                    <span style="width: 50%; ">Chill The Fish</span>
+                    <span id="chill_the_fish_3" class="chill_the_fish_3" style="padding-right: 15px;"></span>
+                    <span style="width: 50%; "> Rose</span>
+                    <span id="rose" class="rose"></span>
+                  </p>
+                  <p style="margin-bottom: 5px; margin-top: 0px; display: flex; justify-content: space-between;">
+                    <span style="width: 50%; ">Chocolate Bar</span>
+                    <span id="chocolate_bar" class="chocolate_bar" style="padding-right: 15px;"></span>
+                    <span style="width: 50%; "> Sea Bass</span>
+                    <span id="sea_bass" class="sea_bass"></span>
+                  </p>
+                  <p style="margin-bottom: 5px; margin-top: 0px; display: flex; justify-content: space-between;">
+                    <span style="width: 50%; ">Clay Ball</span>
+                    <span id="clay_ball" class="clay_ball" style="padding-right: 15px;"></span>
+                    <span style="width: 50%; "> Shark</span>
+                    <span id="shark" class="shark"></span>
+                  </p>
+                  <p style="margin-bottom: 5px; margin-top: 0px; display: flex; justify-content: space-between;">
+                    <span style="width: 50%; ">Cracked Egg</span>
+                    <span id="cracked_egg" class="cracked_egg" style="padding-right: 15px;"></span>
+                    <span style="width: 50%; "> Soggy hot cross bun</span>
+                    <span id="soggy_hot_cross_bun" class="soggy_hot_cross_bun"></span>
+                  </p>
+                  <p style="margin-bottom: 5px; margin-top: 0px; display: flex; justify-content:space-between;">
+                    <span style="width: 50%; ">Dawning Snowball</span>
+                    <span id="dawning_snowball" class="dawning_snowball" style="padding-right: 15px;"></span>
+                    <span style="width: 50%; "> Spook the Fish</span>
+                    <span id="spook_the_fish" class="spook_the_fish"></span>
+                  </p>
+                  <p style="margin-bottom: 5px; margin-top: 0px; display: flex; justify-content: space-between;">
+                    <span style="width: 50%; ">Egg the Fish</span>
+                    <span id="egg_the_fish" class="egg_the_fish" style="padding-right: 15px;"></span>
+                    <span style="width: 50%; "> Star eater scales</span>
+                    <span id="star_eater_scales" class="star_eater_scales"></span>
+                  </p>
+                  <p style="margin-bottom: 5px; margin-top: 0px; display: flex; justify-content: space-between;">
+                    <span style="width: 50%; ">Eggnog</span>
+                    <span id="eggnog" class="eggnog" style="padding-right: 15px;"></span>
+                    <span style="width: 50%; "> Sunscreen</span>
+                    <span id="sunscreen" class="sunscreen"></span>
+                  </p>
+                  <p style="margin-bottom: 5px; margin-top: 0px; display: flex; justify-content: space-between;">
+                    <span style="width: 50%; ">Eyeball</span>
+                    <span id="eyeball" class="eyeball" style="padding-right: 15px;"></span>
+                    <span style="width: 50%; "> Wayfinders Compass</span>
+                    <span id="wayfinders_compass" class="wayfinders_compass"></span>
+                  </p>
+                  <p style="margin-bottom: 5px; margin-top: 0px; display: flex; justify-content: space-between;">
+                    <span style="width: 50%; ">Frozen Fish</span>
+                    <span id="frozen_fish" class="frozen_fish" style="padding-right: 15px;"></span>
+                    <span style="width: 50%; "> Rubber Duck</span>
+                    <span id="rubber_duck" class="rubber_duck"></span>
+                  </p>
+                  <p style="margin-bottom: 5px; margin-top: 0px; display: flex; justify-content: space-between;">
+                    <span style="width: 50%; ">Hot Potato</span>
+                    <span id="hot_potato" class="hot_potato" style="padding-right: 15px;"></span>
+                    <span style="width: 50%; "> Molten Iron</span>
+                    <span id="molten_iron" class="molten_iron"></span>
+                  </p>
+                  <p style="margin-bottom: 5px; margin-top: 0px; display: flex; justify-content: space-between;">
+                    <span style="width: 50%; ">Knockback Slimeball</span>
+                    <span id="knockback_slimeball" class="knockback_slimeball" style="padding-right: 15px;"></span>
+                    <span style="width: 50%; "> Lava Shark</span>
+                    <span id="lava_shark" class="lava_shark"></span>
+                  </p>
+                  <p style="margin-bottom: 5px; margin-top: 0px; display: flex; justify-content: space-between;">
+                    <span style="width: 50%; ">Leviathan</span>
+                    <span id="leviathan" class="leviathan" style="padding-right: 15px;"></span>
+                    <span style="width: 50%; "> Regular Fish</span>
+                    <span id="regular_fish" class="regular_fish"></span>
+                  </p>
+                  <p style="margin-bottom: 5px; margin-top: 0px; display: flex; justify-content: space-between;">
+                    <span style="width: 50%; ">Lucent bee hive</span>
+                    <span id="lucent_bee_hive" class="lucent_bee_hive" style="padding-right: 15px;"></span>
+                    <span style="width: 50%; "> Frozen Meal</span>
+                    <span id="frozen_meal" class="frozen_meal"></span>
+                  </p>
+                  <p style="margin-bottom: 5px; margin-top: 0px; display: flex; justify-content: space-between;">
+                    <span style="width: 50%; ">Mahi Mahi</span>
+                    <span id="mahi_mahi" class="mahi_mahi" style="padding-right: 15px;"></span>
+                    <span style="width: 50%; "> Festive Lights</span>
+                    <span id="festive_lights" class="festive_lights"></span>
+                  </p>
+                  <p style="margin-bottom: 5px; margin-top: 0px; display: flex; justify-content: space-between;">
+                    <span style="width: 50%; ">Nemo</span>
+                    <span id="nemo" class="nemo" style="padding-right: 15px;"></span>
+                    <span style="width: 50%; "> Festival Pufferfish Hat</span>
+                    <span id="festival_pufferfish_hat" class="festival_pufferfish_hat"></span>
+                  </p>
+                  <p style="margin-bottom: 5px; margin-top: 0px; display: flex; justify-content: space-between;">
+                    <span style="width: 50%; ">Oops the Fish</span>
+                    <span id="oops_the_fish" class="oops_the_fish" style="padding-right: 15px;"></span>
+                    <span style="width: 50%; "> Mahi Mahi 2</span>
+                    <span id="mahi_mahi2" class="mahi_mahi2"></span>
+                  </p>
+                  <p style="margin-bottom: 5px; margin-top: 0px; display: flex; justify-content: space-between;">
+                    <span style="width: 50%; ">Pile of sand</span>
+                    <span id="pile_of_sand" class="pile_of_sand" style="padding-right: 15px;"></span>
+                    <span style="width: 50%; "> Puffer Emoji</span>
+                    <span id="puffer_emoji" class="puffer_emoji"></span>
+                  </p>
+                  <p style="margin-bottom: 5px; margin-top: 0px; display: flex; justify-content: space-between;">
+                    <span style="width: 50%; ">Fish Monger Helmet</span>
+                    <span id="fm_helm" class="pile_of_sand" style="padding-right: 15px;"></span>
+                    <span style="width: 50%; "> Fish Monger Chestplate</span>
+                    <span id="fm_cp" class="puffer_emoji"></span>
+                  </p>
+                  <p style="margin-bottom: 5px; margin-top: 0px; display: flex; justify-content: space-between;">
+                    <span style="width: 50%; ">Fish Monger Leggings</span>
+                    <span id="fm_leg" class="pile_of_sand" style="padding-right: 15px;"></span>
+                    <span style="width: 50%; "> Fish Monger Boots</span>
+                    <span id="fm_boot" class="puffer_emoji"></span>
+                  </p>
+                  <p style="font-size: 8px;">Click anywhere to close!</p>
+                </div>
+            </div>
+            <!-- Script for Popup -->
+            <script> 
+            document.getElementById('specialfish').addEventListener('click', function() {
+              document.getElementById('popup').style.display = 'block';
+            });
+            
+            document.getElementById('popup').addEventListener('click', function() {
+              document.getElementById('popup').style.display = 'none';
+            });
+
+            </script>
+
+            <!-- SVG Icons-->
+            
+            </div>
+            
+            <!-- Script; Only one list can be open -->
+            <script>
+              $(document).ready(function() {
+                $("#upgrades-button").click(function() {
+                  $("#upgrades-list").slideToggle();
+                  $("#upgrades-list2").slideUp(); // close the other list if it's open
+                });
+                $("#upgrades-button2").click(function() {
+                  $("#upgrades-list2").slideToggle();
+                  $("#upgrades-list").slideUp(); // close the other list if it's open
+                });
+              });
+            </script>
+
+
+            <!-- Script for getting uuid and api data -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script>
+                $(document).ready(function() {
+                    const apiKey = "b3909a29-acb5-4910-a753-f3b18ad7bb41";
+            
+            /* Get uuid, skin and hypixel api data */        
+$("#submit").click(function() {
+  const username = $("#username").val();
+  const apiUrl = `https://playerdb.co/api/player/minecraft/${username}`;
+  $.getJSON(apiUrl, function(data) {
+    const uuid = data.data.player.id;
+    const fishingApiUrl = `https://api.hypixel.net/player?key=${apiKey}&uuid=${uuid}`;
+    fetchFishingStats(fishingApiUrl);
+    const SKINURL = `https://visage.surgeplay.com/full/512/${uuid}`;
+    const skinImage = document.getElementById('skin');
+    skinImage.addEventListener('load', function() {
+      if (skinImage.naturalWidth > 0) {
+        skinImage.style.display = 'block'; // show the image
+      }
+    });
+    skinImage.src = ''; // reset src attribute
+    fetch(SKINURL)
+     .then(response => response.blob())
+     .then(skinblob => {
+        skinImage.src = URL.createObjectURL(skinblob);
+      });
+  });
+});
+    
+                    function fetchFishingStats(apiUrl) {
+                        $.getJSON(apiUrl, function(data) {
+
+                            /* RANK */
+
+    var DisplayName;
+    var ACTIVERANK;
+    var PLUSCOLOR = data.player.rankPlusColor;
+    var RANK = data.player.prefix;
+    var STAFF = data.player.rank;
+    var PLUSPLUS = data.player.monthlyPackageRank;
+    var NEW = data.player.newPackageRank;
+    var PACKAGE = data.player.packageRank;
+    var RANKCOLOR = data.player.monthlyRankColor;
+
+    if (RANK!== undefined) {
+  ACTIVERANK = RANK;
+} else if (STAFF == 'YOUTUBER' || STAFF == 'MODERATOR' || STAFF == 'ADMIN' || STAFF == 'GAME_MASTER') {
+  ACTIVERANK = STAFF;
+} else if (PLUSPLUS == `SUPERSTAR`) {
+  ACTIVERANK = PLUSPLUS;
+} else if (NEW == 'MVP_PLUS' || NEW == 'MVP' || NEW == 'VIP_PLUS' || NEW == 'VIP' || NEW == 'NONE') {
+  ACTIVERANK = NEW;
+} else {
+  ACTIVERANK = PACKAGE;
+}
+
+DisplayName = data.player.playername;
+
+    switch (PLUSCOLOR) {
+      case undefined:
+        PLUSCOLOR = '<span style="color:#FF5555">';
+        break;
+      case 'RED':
+        PLUSCOLOR = '<span style="color:#FF5555">';
+        break;
+      case 'GOLD':
+        PLUSCOLOR = '<span style="color:#FFAA00">';
+        break;
+      case 'GREEN':
+        PLUSCOLOR = '<span style="color:#55FF55">';
+        break;
+      case 'YELLOW':
+        PLUSCOLOR = '<span style="color:#FFFF55">';
+        break;
+      case 'LIGHT_PURPLE':
+        PLUSCOLOR = '<span style="color:#FF55FF">';
+        break;
+      case 'WHITE':
+        PLUSCOLOR = '<span style="color:#FFFFFF">';
+        break;
+      case 'BLUE':
+        PLUSCOLOR = '<span style="color:#5555FF">';
+        break;
+      case 'DARK_GREEN':
+        PLUSCOLOR = '<span style="color:#00AA00">';
+        break;
+      case 'DARK_RED':
+        PLUSCOLOR = '<span style="color:#AA0000">';
+        break;
+      case 'DARK_AQUA':
+        PLUSCOLOR = '<span style="color:#00AAAA">';
+        break;
+      case 'DARK_PURPLE':
+        PLUSCOLOR = '<span style="color:#AA00AA">';
+        break;
+      case 'DARK_GRAY':
+        PLUSCOLOR = '<span style="color:#555555">';
+        break;
+      case 'BLACK':
+        PLUSCOLOR = '<span style="color:#000000">';
+        break;
+      case 'DARK_BLUE':
+        PLUSCOLOR = '<span style="color:#0000AA">';
+        break;
+      default:
+        PLUSCOLOR = '<span style="color:#FF5555">';
+        break;
+    };
+
+    switch (RANKCOLOR) {
+        case 'GOLD':
+          RANKCOLOR = '#FFAA00';
+          break;
+        case 'AQUA':
+          RANKCOLOR = '#55FFFF'
+          break;
+        case undefined:
+          RANKCOLOR = '#FFAA00';
+          break;
+    };
+
+                                if (RANK !== undefined) {
+                                ACTIVERANK = RANK;
+                            } else if (STAFF == 'YOUTUBER' || STAFF == 'MODERATOR' || STAFF == 'ADMIN' || STAFF == 'GAME_MASTER') {
+                                ACTIVERANK = STAFF;
+                                    } else if (PLUSPLUS == `SUPERSTAR`) {
+                                ACTIVERANK = PLUSPLUS;
+                                } else if (NEW == 'MVP_PLUS' || NEW == 'MVP' || NEW == 'VIP_PLUS' || NEW == 'VIP' || NEW == 'NONE') {
+                                ACTIVERANK = NEW;
+                                } else {
+                                ACTIVERANK = PACKAGE;
+                            }
+
+                            switch (ACTIVERANK) {
+      case '§c[OWNER]':
+        document.getElementById("rank").innerHTML = `<span style="color:#FF5555">[OWNER] ${DisplayName}</span>`;
+        break;
+      case '§d[PIG§b+++§d]':
+        document.getElementById("rank").innerHTML = `<span style="color:#FF55FF">[PIG</span><span style="color:#55FFFF">+++</span><span style="color:#FF55FF">] ${DisplayName}</span>`;
+        break;
+      case '§6[MOJANG]':
+        document.getElementById("rank").innerHTML = `<span style="color:#FFAA00">[MOJANG] ${DisplayName}</span>`;
+        break;
+      case '§6[EVENTS]':
+        document.getElementById("rank").innerHTML = `<span style color:#FFAA00>[EVENTS] ${DisplayName}</span>`;
+        break;
+      case 'YOUTUBER':
+        document.getElementById("rank").innerHTML = `<span style="color:#FF5555">[</span><span style="color:#000000">YOUTUBE</span><span style="color:#FF5555">] ${DisplayName}</span>`;
+        break;
+      case 'MODERATOR':
+        document.getElementById("rank").innerHTML = `<span style="color:#00AA00">[MOD] ${DisplayName}</span>`;
+        break;
+      case 'ADMIN':
+        document.getElementById("rank").innerHTML = `<span style="color:#FF5555">[ADMIN] ${DisplayName}</span>`;
+        break;
+      case 'GAME_MASTER':
+        document.getElementById("rank").innerHTML = `<span style="color:#00AA00">[GM] ${DisplayName}</span>`;
+        break;
+      case 'SUPERSTAR':
+        document.getElementById("rank").innerHTML = `<span style="color:${RANKCOLOR}">[MVP</span>${PLUSCOLOR}++</span><span style="color:${RANKCOLOR}">] ${DisplayName}</span>`;
+        break;
+      case 'MVP_PLUS':
+        document.getElementById("rank").innerHTML = `<span style="color:#55FFFF">[MVP</span>${PLUSCOLOR}+</span><span style="color:#55FFFF">] ${DisplayName}</span>`;
+        break;
+      case 'MVP':
+        document.getElementById("rank").innerHTML = `<span style="color:#55FFFF">[MVP] ${DisplayName}</span>`;
+        break;
+      case 'VIP_PLUS':
+        document.getElementById("rank").innerHTML = `<span style="color:#55FF55">[VIP</span><span style="color:#FFAA00">+</span><span style="color:#55FF55">] ${DisplayName}</span>`;
+        break;
+      case 'VIP':
+        document.getElementById("rank").innerHTML = `<span style="color:#55FF55">[VIP] ${DisplayName}</span>`; 
+        break;
+      case 'NONE':
+        document.getElementById("rank").innerHTML = `<span style="color:#AAAAAA">${DisplayName}</span>`;
+        break;
+      default:
+        document.getElementById("rank").innerHTML = `<span style="color:#AAAAAA">${DisplayName}</span>`;
+        break;
+    };
+    
+                            /* Failsafe if player hasnt logged onto hypixel but exists */
+                            if (data.hasOwnProperty("player")) {
+                                $("#fish-count-water").text(fishCountWater || "This player never logged onto hypixel.");
+                                $("#fish-count-lava").text("");
+                                $("#fish-count-ice").text("");
+                                $("#treasures-water").text("");
+                                $("#treasures-lava").text("");
+                                $("#treasures-ice").text("");
+                                $("#junk-water").text("");
+                                $("#junk-lava").text("");
+                                $("#junk-ice").text("");
+                                $("#upgrade-lure").text("0");
+                                $("#upgrade-dd").text("0");
+                                $("#upgrade-hook").text("0");
+                                $("#upgrade-herbi").text("0");
+                                $("#upgrade-vulcan").text("0");
+
+                                $("#selene").text("0");
+                                $("#helios").text("0");
+                                $("#nyx").text("0");
+                                $("#zeus").text("0");
+                                $("#aphrodite").text("0");
+                                $("#archimedes").text("0");
+                                $("#hades").text("0");
+                                $("#selene-pers").text("0");
+                                $("#helios-pers").text("0");
+                                $("#nyx-pers").text("0");
+                                $("#zeus-pers").text("0");
+                                $("#aphrodite-pers").text("0");
+                                $("#archimedes-pers").text("0");
+                                $("#hades-pers").text("0");
+
+                                $("#angler").text(String.fromCodePoint(0x274C));
+$("#barnacle").text(String.fromCodePoint(0x274C));
+$("#carrot").text(String.fromCodePoint(0x274C));
+$("#cherry_blossom").text(String.fromCodePoint(0x274C));
+$("#chill_the_fish_3").text(String.fromCodePoint(0x274C));
+$("#chocolate_bar").text(String.fromCodePoint(0x274C));
+$("#clay_ball").text(String.fromCodePoint(0x274C));
+$("#cracked_egg").text(String.fromCodePoint(0x274C));
+$("#dawning_snowball").text(String.fromCodePoint(0x274C));
+$("#egg_the_fish").text(String.fromCodePoint(0x274C));
+$("#eggnog").text(String.fromCodePoint(0x274C));
+$("#eyeball").text(String.fromCodePoint(0x274C));
+$("#frozen_fish").text(String.fromCodePoint(0x274C));
+$("#hot_potato").text(String.fromCodePoint(0x274C));
+$("#knockback_slimeball").text(String.fromCodePoint(0x274C));
+$("#leviathan").text(String.fromCodePoint(0x274C));
+$("#lucent_bee_hive").text(String.fromCodePoint(0x274C));
+$("#mahi_mahi").text(String.fromCodePoint(0x274C));
+$("#nemo").text(String.fromCodePoint(0x274C));
+$("#oops_the_fish").text(String.fromCodePoint(0x274C));
+$("#pile_of_sand").text(String.fromCodePoint(0x274C));
+$("#puffer_emoji").text(String.fromCodePoint(0x274C));
+$("#pumpkin_pie").text(String.fromCodePoint(0x274C));
+$("#pumpkin_spice_latte").text(String.fromCodePoint(0x274C));
+$("#raw_ham").text(String.fromCodePoint(0x274C));
+$("#rose").text(String.fromCodePoint(0x274C));
+$("#sea_bass").text(String.fromCodePoint(0x274C));
+$("#shark").text(String.fromCodePoint(0x274C));
+$("#soggy_hot_cross_bun").text(String.fromCodePoint(0x274C));
+$("#spook_the_fish").text(String.fromCodePoint(0x274C));
+$("#star_eater_scales").text(String.fromCodePoint(0x274C));
+$("#sunscreen").text(String.fromCodePoint(0x274C));
+$("#wayfinders_compass").text(String.fromCodePoint(0x274C));
+$("#rubber_duck").text(String.fromCodePoint(0x274C));
+$("#molten_iron").text(String.fromCodePoint(0x274C));
+$("#lava_shark").text(String.fromCodePoint(0x274C));
+$("#regular_fish").text(String.fromCodePoint(0x274C));
+$("#frozen_meal").text(String.fromCodePoint(0x274C));
+$("#festive_lights").text(String.fromCodePoint(0x274C));
+$("#festival_pufferfish_hat").text(String.fromCodePoint(0x274C));
+$("#mahi_mahi2").text(String.fromCodePoint(0x274C));
+                            } else {
+                                $("#fish-count-water").text("This player never logged onto hypixel.");
+                                $("#fish-count-lava").text("");
+                                $("#fish-count-ice").text("");
+                                $("#treasures-water").text("");
+                                $("#treasures-lava").text("");
+                                $("#treasures-ice").text("");
+                                $("#junk-water").text("");
+                                $("#junk-lava").text("");
+                                $("#junk-ice").text("");
+                                $("#upgrade-lure").text("0");
+                                $("#upgrade-dd").text("0");
+                                $("#upgrade-hook").text("0");
+                                $("#upgrade-herbi").text("0");
+                                $("#upgrade-vulcan").text("0");
+
+                                $("#selene").text("0");
+                                $("#helios").text("0");
+                                $("#nyx").text("0");
+                                $("#zeus").text("0");
+                                $("#aphrodite").text("0");
+                                $("#archimedes").text("0");
+                                $("#hades").text("0");
+                                $("#selene-pers").text("0");
+                                $("#helios-pers").text("0");
+                                $("#nyx-pers").text("0");
+                                $("#zeus-pers").text("0");
+                                $("#aphrodite-pers").text("0");
+                                $("#archimedes-pers").text("0");
+                                $("#hades-pers").text("0");
+
+                                $("#angler").text(String.fromCodePoint(0x274C));
+$("#barnacle").text(String.fromCodePoint(0x274C));
+$("#carrot").text(String.fromCodePoint(0x274C));
+$("#cherry_blossom").text(String.fromCodePoint(0x274C));
+$("#chill_the_fish_3").text(String.fromCodePoint(0x274C));
+$("#chocolate_bar").text(String.fromCodePoint(0x274C));
+$("#clay_ball").text(String.fromCodePoint(0x274C));
+$("#cracked_egg").text(String.fromCodePoint(0x274C));
+$("#dawning_snowball").text(String.fromCodePoint(0x274C));
+$("#egg_the_fish").text(String.fromCodePoint(0x274C));
+$("#eggnog").text(String.fromCodePoint(0x274C));
+$("#eyeball").text(String.fromCodePoint(0x274C));
+$("#frozen_fish").text(String.fromCodePoint(0x274C));
+$("#hot_potato").text(String.fromCodePoint(0x274C));
+$("#knockback_slimeball").text(String.fromCodePoint(0x274C));
+$("#leviathan").text(String.fromCodePoint(0x274C));
+$("#lucent_bee_hive").text(String.fromCodePoint(0x274C));
+$("#mahi_mahi").text(String.fromCodePoint(0x274C));
+$("#nemo").text(String.fromCodePoint(0x274C));
+$("#oops_the_fish").text(String.fromCodePoint(0x274C));
+$("#pile_of_sand").text(String.fromCodePoint(0x274C));
+$("#puffer_emoji").text(String.fromCodePoint(0x274C));
+$("#pumpkin_pie").text(String.fromCodePoint(0x274C));
+$("#pumpkin_spice_latte").text(String.fromCodePoint(0x274C));
+$("#raw_ham").text(String.fromCodePoint(0x274C));
+$("#rose").text(String.fromCodePoint(0x274C));
+$("#sea_bass").text(String.fromCodePoint(0x274C));
+$("#shark").text(String.fromCodePoint(0x274C));
+$("#soggy_hot_cross_bun").text(String.fromCodePoint(0x274C));
+$("#spook_the_fish").text(String.fromCodePoint(0x274C));
+$("#star_eater_scales").text(String.fromCodePoint(0x274C));
+$("#sunscreen").text(String.fromCodePoint(0x274C));
+$("#wayfinders_compass").text(String.fromCodePoint(0x274C));
+$("#rubber_duck").text(String.fromCodePoint(0x274C));
+$("#molten_iron").text(String.fromCodePoint(0x274C));
+$("#lava_shark").text(String.fromCodePoint(0x274C));
+$("#regular_fish").text(String.fromCodePoint(0x274C));
+$("#frozen_meal").text(String.fromCodePoint(0x274C));
+$("#festive_lights").text(String.fromCodePoint(0x274C));
+$("#festival_pufferfish_hat").text(String.fromCodePoint(0x274C));
+$("#mahi_mahi2").text(String.fromCodePoint(0x274C));
+                            }
+
+                            /* Failsafe if player logged onto hypixel but doesnt have fishing stats */
+                            if (data.player.stats.MainLobby?.hasOwnProperty("fishing")) {
+                                var fishCountWater = data.player.stats.MainLobby.fishing.stats.permanent.water.fish;
+                                $("#fish-count-water").text(fishCountWater || "This player has no fishing stats.");
+                            } else {
+                                $("#fish-count-water").text("This player has no fishing stats.");
+                                $("#fish-count-lava").text("");
+                                $("#fish-count-ice").text("");
+                                $("#treasures-water").text("");
+                                $("#treasures-lava").text("");
+                                $("#treasures-ice").text("");
+                                $("#junk-water").text("");
+                                $("#junk-lava").text("");
+                                $("#junk-ice").text("");
+                                $("#upgrade-lure").text("0");
+                                $("#upgrade-dd").text("0");
+                                $("#upgrade-hook").text("0");
+                                $("#upgrade-herbi").text("0");
+                                $("#upgrade-vulcan").text("0");
+
+                                $("#selene").text("0");
+                                $("#helios").text("0");
+                                $("#nyx").text("0");
+                                $("#zeus").text("0");
+                                $("#aphrodite").text("0");
+                                $("#archimedes").text("0");
+                                $("#hades").text("0");
+                                $("#selene-pers").text("0");
+                                $("#helios-pers").text("0");
+                                $("#nyx-pers").text("0");
+                                $("#zeus-pers").text("0");
+                                $("#aphrodite-pers").text("0");
+                                $("#archimedes-pers").text("0");
+                                $("#hades-pers").text("0");
+
+                                $("#angler").text(String.fromCodePoint(0x274C));
+$("#barnacle").text(String.fromCodePoint(0x274C));
+$("#carrot").text(String.fromCodePoint(0x274C));
+$("#cherry_blossom").text(String.fromCodePoint(0x274C));
+$("#chill_the_fish_3").text(String.fromCodePoint(0x274C));
+$("#chocolate_bar").text(String.fromCodePoint(0x274C));
+$("#clay_ball").text(String.fromCodePoint(0x274C));
+$("#cracked_egg").text(String.fromCodePoint(0x274C));
+$("#dawning_snowball").text(String.fromCodePoint(0x274C));
+$("#egg_the_fish").text(String.fromCodePoint(0x274C));
+$("#eggnog").text(String.fromCodePoint(0x274C));
+$("#eyeball").text(String.fromCodePoint(0x274C));
+$("#frozen_fish").text(String.fromCodePoint(0x274C));
+$("#hot_potato").text(String.fromCodePoint(0x274C));
+$("#knockback_slimeball").text(String.fromCodePoint(0x274C));
+$("#leviathan").text(String.fromCodePoint(0x274C));
+$("#lucent_bee_hive").text(String.fromCodePoint(0x274C));
+$("#mahi_mahi").text(String.fromCodePoint(0x274C));
+$("#nemo").text(String.fromCodePoint(0x274C));
+$("#oops_the_fish").text(String.fromCodePoint(0x274C));
+$("#pile_of_sand").text(String.fromCodePoint(0x274C));
+$("#puffer_emoji").text(String.fromCodePoint(0x274C));
+$("#pumpkin_pie").text(String.fromCodePoint(0x274C));
+$("#pumpkin_spice_latte").text(String.fromCodePoint(0x274C));
+$("#raw_ham").text(String.fromCodePoint(0x274C));
+$("#rose").text(String.fromCodePoint(0x274C));
+$("#sea_bass").text(String.fromCodePoint(0x274C));
+$("#shark").text(String.fromCodePoint(0x274C));
+$("#soggy_hot_cross_bun").text(String.fromCodePoint(0x274C));
+$("#spook_the_fish").text(String.fromCodePoint(0x274C));
+$("#star_eater_scales").text(String.fromCodePoint(0x274C));
+$("#sunscreen").text(String.fromCodePoint(0x274C));
+$("#wayfinders_compass").text(String.fromCodePoint(0x274C));
+$("#rubber_duck").text(String.fromCodePoint(0x274C));
+$("#molten_iron").text(String.fromCodePoint(0x274C));
+$("#lava_shark").text(String.fromCodePoint(0x274C));
+$("#regular_fish").text(String.fromCodePoint(0x274C));
+$("#frozen_meal").text(String.fromCodePoint(0x274C));
+$("#festive_lights").text(String.fromCodePoint(0x274C));
+$("#festival_pufferfish_hat").text(String.fromCodePoint(0x274C));
+$("#mahi_mahi2").text(String.fromCodePoint(0x274C));
+                            }
+
+                            /* Fishing stats */
+                            if (data.player.stats?.MainLobby?.fishing?.stats?.permanent?.hasOwnProperty("water")) {
+                                var fishCountWater = data.player.stats.MainLobby.fishing.stats.permanent.water.fish;
+                                $("#fish-count-water").text(fishCountWater || "0");
+                            } else {
+                                $("#fish-count-water").text(0);
+                            }
+
+                            if (data.player.stats?.MainLobby?.fishing?.stats?.permanent?.hasOwnProperty("lava")) {
+                                var fishCountLava = data.player.stats.MainLobby.fishing.stats.permanent.lava.fish;
+                                $("#fish-count-lava").text(fishCountLava || "0");
+                            } else {
+                                $("#fish-count-lava").text("0");
+                            }
+
+                            if (data.player.stats?.MainLobby?.fishing?.stats?.permanent?.hasOwnProperty("ice")) {
+                                var fishCountIce = data.player.stats.MainLobby.fishing.stats.permanent.ice.fish;
+                                $("#fish-count-ice").text(fishCountIce || "0");
+                            } else {
+                                $("#fish-count-ice").text("0");
+                            }
+    
+                            if (data.player.stats?.MainLobby?.fishing?.stats?.permanent?.hasOwnProperty("water")) {
+                                var treasuresWater = data.player.stats.MainLobby.fishing.stats.permanent.water.treasure;
+                                $("#treasures-water").text(treasuresWater || "0");
+                            } else {
+                                $("#treasures-water").text(0);
+                            }
+
+                            if (data.player.stats?.MainLobby?.fishing?.stats?.permanent?.hasOwnProperty("lava")) {
+                                var treasuresLava = data.player.stats.MainLobby.fishing.stats.permanent.lava.treasure;
+                                $("#treasures-lava").text(treasuresLava || "0");
+                            } else {
+                                $("#treasures-lava").text(0);
+                            }
+
+                            if (data.player.stats?.MainLobby?.fishing?.stats?.permanent?.hasOwnProperty("ice")) {
+                                var treasuresIce = data.player.stats.MainLobby.fishing.stats.permanent.ice.treasure;
+                                $("#treasures-ice").text(treasuresIce || "0");
+                            } else {
+                                $("#treasures-ice").text(0);
+                            }
+    
+                            if (data.player.stats?.MainLobby?.fishing?.stats?.permanent?.hasOwnProperty("water")) {
+                                var junkWater = data.player.stats.MainLobby.fishing.stats.permanent.water.junk;
+                                $("#junk-water").text(junkWater || "0");
+                            } else {
+                                $("#junk-water").text(0);
+                            }
+
+                            if (data.player.stats?.MainLobby?.fishing?.stats?.permanent?.hasOwnProperty("lava")) {
+                                var junkLava = data.player.stats.MainLobby.fishing.stats.permanent.lava.junk;
+                                $("#junk-lava").text(junkLava || "0");
+                            } else {
+                                $("#junk-lava").text(0);
+                            }
+
+                            if (data.player.stats?.MainLobby?.fishing?.stats?.permanent?.hasOwnProperty("ice")) {
+                                var junkIce = data.player.stats.MainLobby.fishing.stats.permanent.ice.junk;
+                                $("#junk-ice").text(junkIce || "0");
+                            } else {
+                                $("#junk-ice").text(0);
+                            }
+
+                            /* upgrades */
+
+                            if (data.player.stats.MainLobby.fishing?.enchants?.lure?.level) {
+                              var upgradeLure = data.player.stats.MainLobby.fishing.enchants.lure.level;
+                              $("#upgrade-lure").text(upgradeLure || "0");
+                            } else {
+                              $("#upgrade-lure").text("0");
+                              $("#upgrade-dd").text("0");
+                              $("#upgrade-hook").text("0");
+                              $("#upgrade-herbi").text("0");
+                              $("#upgrade-vulcan").text("0");
+                            }
+
+                            if (data.player.stats.MainLobby.fishing?.enchants?.dumpster_diver?.level) {
+                              var upgradeDD = data.player.stats.MainLobby.fishing.enchants.dumpster_diver.level;
+                              $("#upgrade-dd").text(upgradeDD || "0");
+
+                            } else {
+                              $("#upgrade-dd").text("0");
+                            }
+
+                            if (data.player.stats.MainLobby.fishing?.enchants?.hasOwnProperty("mythical_hook")) {
+                              var upgradeHook = data.player.stats.MainLobby.fishing.enchants.mythical_hook.level;
+                              $("#upgrade-hook").text(upgradeHook || "0");
+                              
+                            } else {
+                              $("#upgrade-hook").text("0");
+                            }
+
+                            if (data.player.stats.MainLobby.fishing?.enchants?.hasOwnProperty("herbivore")) {
+                              var upgradeHebi = data.player.stats.MainLobby.fishing.enchants.herbivore.level;
+                              $("#upgrade-herbi").text(upgradeHebi || "0");
+
+                            } else {
+                              $("#upgrade-herbi").text("0");
+                            }
+
+                            if (data.player.stats.MainLobby.fishing?.enchants?.hasOwnProperty("vulcans_blessing")) {
+                              var upgradeVulcan = data.player.stats.MainLobby.fishing.enchants.vulcans_blessing.level;
+                              $("#upgrade-vulcan").text(upgradeVulcan || "0");
+                            
+                            } else {
+                              $("#upgrade-vulcan").text("0");
+                            }
+
+                            /* special and weight */
+
+                            if (data.player.stats.MainLobby.fishing?.orbs?.hasOwnProperty("selene")) {
+                              var selene = data.player.stats.MainLobby.fishing.orbs.selene;
+                              $("#selene").text(selene || "0");
+                            
+                            } else {
+                              $("#selene").text("0");
+                            }
+
+                            if (data.player.stats.MainLobby.fishing?.orbs?.weight?.hasOwnProperty("selene")) {
+                              var seleneweight = data.player.stats.MainLobby.fishing.orbs.weight.selene;
+                              $("#selene-pers").text(seleneweight || "0");
+                            
+                            } else {
+                              $("#selene-pers").text("0");
+                            }
+
+                            if (data.player.stats.MainLobby.fishing?.orbs?.hasOwnProperty("helios")) {
+                              var helios = data.player.stats.MainLobby.fishing.orbs.helios;
+                              $("#helios").text(helios || "0");
+                            
+                            } else {
+                              $("#helios").text("0");
+                            }
+
+                            if (data.player.stats.MainLobby.fishing?.orbs?.weight?.hasOwnProperty("helios")) {
+                              var heliosweight = data.player.stats.MainLobby.fishing.orbs.weight.helios;
+                              $("#helios-pers").text(heliosweight || "0");
+                            
+                            } else {
+                              $("#helios-pers").text("0");
+                            }
+
+                            if (data.player.stats.MainLobby.fishing?.orbs?.hasOwnProperty("nyx")) {
+                              var nyx = data.player.stats.MainLobby.fishing.orbs.nyx;
+                              $("#nyx").text(nyx || "0");
+                            
+                            } else {
+                              $("#nyx").text("0");
+                            }
+                            
+                            if (data.player.stats.MainLobby.fishing?.orbs?.weight?.hasOwnProperty("nyx")) {
+                              var nyxweight = data.player.stats.MainLobby.fishing.orbs.weight.nyx;
+                              $("#nyx-pers").text(nyxweight || "0");
+                            
+                            } else {
+                              $("#nyx-pers").text("0");
+                            }
+
+                            if (data.player.stats.MainLobby.fishing?.orbs?.hasOwnProperty("aphrodite")) {
+                              var aphrodite = data.player.stats.MainLobby.fishing.orbs.aphrodite;
+                              $("#aphrodite").text(aphrodite || "0");
+                            
+                            } else {
+                              $("#aphrodite").text("0");
+                            }
+                            
+                            if (data.player.stats.MainLobby.fishing?.orbs?.weight?.hasOwnProperty("aphrodite")) {
+                              var aphroditeweight = data.player.stats.MainLobby.fishing.orbs.weight.aphrodite;
+                              $("#aphrodite-pers").text(aphroditeweight || "0");
+                            
+                            } else {
+                              $("#aphrodite-pers").text("0");
+                            }
+
+                            if (data.player.stats.MainLobby.fishing?.orbs?.hasOwnProperty("zeus")) {
+                              var zeus = data.player.stats.MainLobby.fishing.orbs.zeus;
+                              $("#zeus").text(zeus || "0");
+                            
+                            } else {
+                              $("#zeus").text("0");
+                            }
+                            
+                            if (data.player.stats.MainLobby.fishing?.orbs?.weight?.hasOwnProperty("zeus")) {
+                              var zeusweight = data.player.stats.MainLobby.fishing.orbs.weight.zeus;
+                              $("#zeus-pers").text(zeusweight || "0");
+                            
+                            } else {
+                              $("#zeus-pers").text("0");
+                            }
+
+                            if (data.player.stats.MainLobby.fishing?.orbs?.hasOwnProperty("archimedes")) {
+                              var archimedes = data.player.stats.MainLobby.fishing.orbs.archimedes;
+                              $("#archimedes").text(archimedes || "0");
+                            
+                            } else {
+                              $("#archimedes").text("0");
+                            }
+                            
+                            if (data.player.stats.MainLobby.fishing?.orbs?.weight?.hasOwnProperty("archimedes")) {
+                              var archimedesweight = data.player.stats.MainLobby.fishing.orbs.weight.archimedes;
+                              $("#archimedes-pers").text(archimedesweight || "0");
+                            
+                            } else {
+                              $("#archimedes-pers").text("0");
+                            }
+
+                            if (data.player.stats.MainLobby.fishing?.orbs?.hasOwnProperty("hades")) {
+                              var hades = data.player.stats.MainLobby.fishing.orbs.hades;
+                              $("#hades").text(hades || "0");
+                            
+                            } else {
+                              $("#hades").text("0");
+                            }
+
+                            if (data.player.stats.MainLobby.fishing?.orbs?.weight?.hasOwnProperty("hades")) {
+                              var hadesweight = data.player.stats.MainLobby.fishing.orbs.weight.hades;
+                              $("#hades-pers").text(hadesweight || "0");
+                            
+                            } else {
+                              $("#hades-pers").text("0");
+                            }
+
+                            /* SPECIAL FISH */
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("angler")) {
+                                var angler = data.player.stats.MainLobby.fishing.special_fish.angler;
+                                $("#angler").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#angler").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("barnacle")) {
+                                var barnacle = data.player.stats.MainLobby.fishing.special_fish.barnacle;
+                                $("#barnacle").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#barnacle").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("carrot")) {
+                                var carrot = data.player.stats.MainLobby.fishing.special_fish.carrot;
+                                $("#carrot").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#carrot").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("cherry_blossom")) {
+                                var cherry_blossom = data.player.stats.MainLobby.fishing.special_fish.carrot;
+                                $("#cherry_blossom").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#cherry_blossom").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("chill_the_fish_3")) {
+                                var chill_the_fish_3 = data.player.stats.MainLobby.fishing.special_fish.chill_the_fish_3;
+                                $("#chill_the_fish_3").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#chill_the_fish_3").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("chocolate_bar")) {
+                                var chocolate_bar = data.player.stats.MainLobby.fishing.special_fish.chocolate_bar;
+                                $("#chocolate_bar").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#chocolate_bar").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("clay_ball")) {
+                                var clay_ball = data.player.stats.MainLobby.fishing.special_fish.clay_ball;
+                                $("#clay_ball").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#clay_ball").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("cracked_egg")) {
+                                var cracked_egg = data.player.stats.MainLobby.fishing.special_fish.cracked_egg;
+                                $("#cracked_egg").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#cracked_egg").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("dawning_snowball")) {
+                                var dawning_snowball = data.player.stats.MainLobby.fishing.special_fish.dawning_snowball;
+                                $("#dawning_snowball").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#dawning_snowball").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("egg_the_fish")) {
+                                var egg_the_fish = data.player.stats.MainLobby.fishing.special_fish.egg_the_fish;
+                                $("#egg_the_fish").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#egg_the_fish").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("eggnog")) {
+                                var eggnog = data.player.stats.MainLobby.fishing.special_fish.eggnog;
+                                $("#eggnog").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#eggnog").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("eyeball")) {
+                                var eyeball = data.player.stats.MainLobby.fishing.special_fish.eyeball;
+                                $("#eyeball").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#eyeball").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("frozen_fish")) {
+                                var frozen_fish = data.player.stats.MainLobby.fishing.special_fish.frozen_fish;
+                                $("#frozen_fish").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#frozen_fish").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("hot_potato")) {
+                                var hot_potato = data.player.stats.MainLobby.fishing.special_fish.hot_potato;
+                                $("#hot_potato").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#hot_potato").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("knockback_slimeball")) {
+                                var knockback_slimeball = data.player.stats.MainLobby.fishing.special_fish.knockback_slimeball;
+                                $("#knockback_slimeball").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#knockback_slimeball").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("leviathan")) {
+                                var leviathan = data.player.stats.MainLobby.fishing.special_fish.leviathan;
+                                $("#leviathan").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#leviathan").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("lucent_bee_hive")) {
+                                var lucent_bee_hive = data.player.stats.MainLobby.fishing.special_fish.lucent_bee_hive;
+                                $("#lucent_bee_hive").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#lucent_bee_hive").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("mahi_mahi")) {
+                                var mahi_mahi = data.player.stats.MainLobby.fishing.special_fish.mahi_mahi;
+                                $("#mahi_mahi").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#mahi_mahi").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("nemo")) {
+                                var nemo = data.player.stats.MainLobby.fishing.special_fish.nemo;
+                                $("#nemo").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#nemo").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("oops_the_fish")) {
+                                var oops_the_fish = data.player.stats.MainLobby.fishing.special_fish.oops_the_fish;
+                                $("#oops_the_fish").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#oops_the_fish").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("pile_of_sand")) {
+                                var pile_of_sand = data.player.stats.MainLobby.fishing.special_fish.pile_of_sand;
+                                $("#pile_of_sand").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#pile_of_sand").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("puffer_emoji")) {
+                                var puffer_emoji = data.player.stats.MainLobby.fishing.special_fish.puffer_emoji;
+                                $("#puffer_emoji").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#puffer_emoji").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("pumpkin_pie")) {
+                                var pumpkin_pie = data.player.stats.MainLobby.fishing.special_fish.pumpkin_pie;
+                                $("#pumpkin_pie").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#pumpkin_pie").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("pumpkin_spice_latte")) {
+                                var pumpkin_spice_latte = data.player.stats.MainLobby.fishing.special_fish.pumpkin_spice_latte;
+                                $("#pumpkin_spice_latte").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#pumpkin_spice_latte").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("raw_ham")) {
+                                var raw_ham = data.player.stats.MainLobby.fishing.special_fish.raw_ham;
+                                $("#raw_ham").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#raw_ham").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("rose")) {
+                                var rose = data.player.stats.MainLobby.fishing.special_fish.rose;
+                                $("#rose").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#rose").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("sea_bass")) {
+                                var sea_bass = data.player.stats.MainLobby.fishing.special_fish.sea_bass;
+                                $("#sea_bass").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#sea_bass").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("shark")) {
+                                var shark = data.player.stats.MainLobby.fishing.special_fish.shark;
+                                $("#shark").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#shark").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("soggy_hot_cross_bun")) {
+                                var soggy_hot_cross_bun = data.player.stats.MainLobby.fishing.special_fish.soggy_hot_cross_bun;
+                                $("#soggy_hot_cross_bun").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#soggy_hot_cross_bun").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("spook_the_fish")) {
+                                var spook_the_fish = data.player.stats.MainLobby.fishing.special_fish.spook_the_fish;
+                                $("#spook_the_fish").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#spook_the_fish").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("star_eater_scales")) {
+                                var star_eater_scales = data.player.stats.MainLobby.fishing.special_fish.star_eater_scales;
+                                $("#star_eater_scales").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#star_eater_scales").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("sunscreen")) {
+                                var sunscreen = data.player.stats.MainLobby.fishing.special_fish.sunscreen;
+                                $("#sunscreen").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#sunscreen").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("wayfinders_compass")) {
+                                var wayfinders_compass = data.player.stats.MainLobby.fishing.special_fish.wayfinders_compass;
+                                $("#wayfinders_compass").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#wayfinders_compass").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("rubber_duck")) {
+                                var rubber_duck = data.player.stats.MainLobby.fishing.special_fish.rubber_duck;
+                                $("#rubber_duck").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#rubber_duck").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("molten_iron")) {
+                                var molten_iron = data.player.stats.MainLobby.fishing.special_fish.molten_iron;
+                                $("#molten_iron").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#molten_iron").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("lava_shark")) {
+                                var lava_shark = data.player.stats.MainLobby.fishing.special_fish.lava_shark;
+                                $("#lava_shark").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#lava_shark").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("regular_fish")) {
+                                var regular_fish = data.player.stats.MainLobby.fishing.special_fish.regular_fish;
+                                $("#regular_fish").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#regular_fish").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("frozen_meal")) {
+                                var frozen_meal = data.player.stats.MainLobby.fishing.special_fish.frozen_meal;
+                                $("#frozen_meal").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#frozen_meal").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("festive_lights")) {
+                                var festive_lights = data.player.stats.MainLobby.fishing.special_fish.festive_lights;
+                                $("#festive_lights").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#festive_lights").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("festival_pufferfish_hat")) {
+                                var festival_pufferfish_hat = data.player.stats.MainLobby.fishing.special_fish.festival_pufferfish_hat;
+                                $("#festival_pufferfish_hat").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#festival_pufferfish_hat").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("mahi_mahi2")) {
+                                var mahi_mahi2 = data.player.stats.MainLobby.fishing.special_fish.mahi_mahi2;
+                                $("#mahi_mahi2").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#mahi_mahi2").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("fish_monger_suit_helmet")) {
+                                var fm_helm = data.player.stats.MainLobby.fishing.special_fish.fish_monger_suit_helmet;
+                                $("#fm_helm").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#fm_helm").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("fish_monger_suit_chestplate")) {
+                                var fm_cp = data.player.stats.MainLobby.fishing.special_fish.fish_monger_suit_chestplate;
+                                $("#fm_cp").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#fm_cp").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("fish_monger_suit_leggings")) {
+                                var fm_leg = data.player.stats.MainLobby.fishing.special_fish.fish_monger_suit_leggings;
+                                $("#fm_leg").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#fm_leg").text(String.fromCodePoint(0x274C));
+                            }
+
+                            if (data.player.stats.MainLobby.fishing.special_fish.hasOwnProperty("fish_monger_suit_boots")) {
+                                var fm_boot = data.player.stats.MainLobby.fishing.special_fish.fish_monger_suit_boots;
+                                $("#fm_boot").text(String.fromCodePoint(0x2705) || "0");
+                            } else {
+                                $("#fm_boot").text(String.fromCodePoint(0x274C));
+                            }
+
+                            var DisplayName = data.player.playername;
+                            $("#rank-display").html(`${ACTIVERANK} ${DisplayName}`);
+                        });
+                    }
+                });
+            </script>
+            
+            <p class="oswald">Last Update: Added <span id="water-type">special fish</span>!</p>
+    </div>
+
+  </body>
+  <footer class="footer">
+    <p class="oswald">&hearts; by ui; dont forget to tip your landlord! </p>
+  </footer>
+</html>
