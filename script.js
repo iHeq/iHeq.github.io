@@ -28,7 +28,7 @@
     <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/discord-white-icon.png" alt="Discord" style="width: 32px;">
   </a>
   <a href="https://steamcommunity.com/id/nik6laj/" target="_blank" style="display: flex; align-items: center; gap: 6px; text-decoration: none; color: white;">
-    <span>Steam</span>
+    <span>Steam ⠀</span>
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Steam_icon_logo.svg/640px-Steam_icon_logo.svg.png" alt="Steam" style="width: 32px;">
   </a>
   <a href="https://open.spotify.com/intl-de/artist/4KlIw0lFNEwn3I1tvdFd1T" target="_blank" style="display: flex; align-items: center; gap: 6px; text-decoration: none; color: white;">
@@ -36,7 +36,7 @@
     <img src="https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Primary_Logo_RGB_White.png" alt="Spotify" style="width: 32px;">
   </a>
   <a href="https://github.com/iheq" target="_blank" style="display: flex; align-items: center; gap: 6px; text-decoration: none; color: white;">
-    <span>GitHub</span>
+    <span>GitHub⠀</span>
     <img src="https://icones.pro/wp-content/uploads/2021/06/icone-github-grise.png" alt="GitHub" style="width: 32px;">
   </a>
 </div>
