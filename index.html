@@ -1,87 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>awawawawa</title>
-    <style>
-        body {
-            background-color: black;
-            color: white;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: 'MS Gothic', sans-serif;
-        }
-        .glow {
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-        .option-container {
-            display: flex;
-            align-items: center;
-            margin: 10px 0;
-        }
-        .option-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 24px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            text-align: center;
-            transition: background 0.3s;
-            font-size: 1.2rem;
-            font-weight: bold;
-            text-decoration: none;
-            color: white;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.9);
-            width: 200px;
-            margin-left: 10px;
-        }
-        .option-button:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-        .option-icon {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-        .option-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 12px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>feeling.limited</title>
+   <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="img/fav.png" type="image/x-icon" />
+  <script src="script.js" defer></script>
 </head>
 <body>
-    <h1 class="glow">feeling limited</h1>
-    <div class="option-container">
-        <div class="option-icon"><img src="img/icon1.png" alt="Icon 1"></div>
-        <a href="me.html" class="option-button">me</a>
+  <div class="container">
+    <div class="draggable" id="draggable-window" style="top: 50%; left: 50%; transform: translate(-50%, -50%);">
+      <div class="title-bar" id="drag-handle">
+        <span id="title-label">~ about_me.txt</span>
+        <div class="title-bar-buttons">
+          <div class="button" style="background-color: #a00;"></div>
+          <div class="button" style="background-color: #aa0;"></div>
+          <div class="button" style="background-color: #0a0;"></div>
+        </div>
+      </div>
+      <div class="window-body fade" id="window-content">
+        <!-- Content load dynamic -->
+      </div>
     </div>
-    <div class="option-container">
-        <div class="option-icon"><img src="img/icon2.png" alt="Icon 2"></div>
-        <a href="myselfyourself/video.html" class="option-button">myself; yourself</a>
+  </div>
+  
+<!-- intro -->
+<div id="intro-overlay" style="
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s ease;
+">
+  <p>click anywhere to enter</p>
+  <img src="https://count.getloli.com/@ui?name=ui&theme=original-old&padding=4" height="85">
+</div>
+
+
+<!-- bgm -->
+<audio id="bg-music" loop>
+  <source src="aud/bgm.m4a" type="audio/mpeg" />
+</audio>
+
+<!-- taskbar -->
+  <div class="taskbar">
+    <div class="taskbar-button active" data-tab="about">
+      <img src="img/about_me.jpg" alt="About icon" />
+      About Me
     </div>
-    <div class="option-container">
-        <div class="option-icon"><img src="img/icon3.png" alt="Icon 3"></div>
-        <a href="fish/fishing.html" class="option-button">fishing</a>
+    <div class="taskbar-button" data-tab="vn">
+      <img src="img/iku.png" alt="VN icon" />
+      VN Translation
     </div>
-    <div class="option-container">
-        <div class="option-icon"><img src="img/icon4.png" alt="Icon 4"></div>
-        <a href="#" class="option-button">h2o archive</a>
+    <div class="taskbar-button" data-tab="manga">
+      <img src="https://i.ibb.co/dm0FKx4/Screenshot-2024-11-11-103607.png?dateline=1731318824" alt="Manga icon" />
+      Manga Translation
     </div>
+    <div class="taskbar-button" data-tab="myself">
+      <img src="https://m.media-amazon.com/images/M/MV5BNzdiNmVkNmUtYjUyYy00MmQ2LWIzMGQtNTA2ZDgxZDFiYmQ2XkEyXkFqcGc@._V1_.jpg" alt="Myself icon" />
+      Myself; Yourself
+    </div>
+  </div>
 </body>
 </html>

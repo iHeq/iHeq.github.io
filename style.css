@@ -1,138 +1,206 @@
-/* style.css */
-@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
-body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
+   @import url('https://fonts.googleapis.com/css2?family=MS+Gothic&display=swap');
 
-#background-container {
-    width: 100%;
-    height: 100vh;
-    background-image: url('img/bg1.png');
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background-color: #000;
+      font-family: 'MS Gothic', monospace, Arial, sans-serif;
+      color: #eee;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      user-select: none;
+    background-image: url('img/picmix.com_1699659.gif');
+    background-repeat: no-repeat;
+    background-position: center center;
     background-size: cover;
-    background-position: center;
-    animation: background-switch 2s infinite;
-}
-
-@keyframes background-switch {
-    0% {
-        background-image: url('img/bg1.png');
     }
-    50% {
-        background-image: url('img/bg2.png');
+
+    /* TASKBAR */
+    .taskbar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #111;
+      border-top: 2px solid #333;
+      box-shadow: inset 0 2px 5px #555;
+      padding: 5px 10px;
+      display: flex;
+      gap: 8px;
+      z-index: 1000;
     }
-    100% {
-        background-image: url('img/bg1.png');
+
+    .taskbar-button {
+      background: #222;
+      border: 1px solid #555;
+      border-radius: 2px;
+      color: #ccc;
+      font-size: 14px;
+      padding: 5px 12px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      transition: background 0.15s ease, color 0.15s ease;
+      box-shadow: inset 0 1px 0 #444;
+      user-select: none;
+      font-weight: bold;
     }
-}
-
-.enter {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    color: white;
-    z-index: 1;
-    cursor: url(''), auto;
-}
-
-.enter p {
-    font-family :  'MS Gothic', 'ＭＳ ゴシック' , 'MS ゴシック' , Msgothic, 'ヒラギノ明朝 ProN', sans-serif;
-}
-
-.content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    opacity: 0;
-    transition: opacity 1s;
-    font-size: 0;
-    object-fit: cover;
-
-    color: white;
-}
-
-.content img {
-    scale: 75%;
-    max-width: 750px;
-    object-fit: cover;
-    text-align: left;
-}
-
-.animated-text {
-    font-size: 42px;
-    font-family :  'MS Gothic', 'ＭＳ ゴシック' , 'MS ゴシック' , Msgothic, 'ヒラギノ明朝 ProN', sans-serif;
-    margin-bottom: 10px;
-    margin-top: 0px;
-}
-
-#animated-text span {
-    font-size: 42px;
-    font-family :  'MS Gothic', 'ＭＳ ゴシック' , 'MS ゴシック' , Msgothic, 'ヒラギノ明朝 ProN', sans-serif;
-    animation: blink 2s infinite;
-  }
-  
-#animated-text span:nth-child(odd) {
-    animation-delay: 0.5s;
-  }
-  
-@keyframes blink {
-    0% {
-      opacity: 1;
+    .taskbar-button img {
+      width: 16px;
+      height: 16px;
+      margin-right: 6px;
+      filter: grayscale(100%) brightness(1.2);
     }
-    50% {
-      opacity: 0;
+    .taskbar-button.active,
+    .taskbar-button:hover {
+      background: #555;
+      color: #fff;
+      box-shadow: none;
     }
-    100% {
-      opacity: 1;
+
+    /* CONTAINER reserves space for taskbar */
+    .container {
+      position: relative;
+      /* width: 720px; */
+      height: calc(100vh - 40px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      user-select: text;
     }
-  }
 
-.image-text {
-    display: inline-block; /* Display the text as an inline block */
-    text-align: left; /* Align the text to the left */
-}
+    /* DRAGGABLE WINDOW */
+    .draggable {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      cursor: grab;
+      width: 1000px;
+      background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+      border: 2px solid #444;
+      border-radius: 6px;
+      box-shadow:
+        0 0 10px #111,
+        inset 0 0 5px #333;
+      user-select: none;
+      color: #ddd;
+      font-size: 15px;
+    }
 
-#description {
-    font-size: 12px;
-    font-family :  'MS Gothic', 'ＭＳ ゴシック' , 'MS ゴシック' , Msgothic, 'ヒラギノ明朝 ProN', sans-serif;
-    margin: 0;
-}
+    .title-bar {
+      background: linear-gradient(to right, #222, #111);
+      padding: 6px 12px;
+      color: #eee;
+      font-weight: bold;
+      font-family: 'MS Gothic', monospace;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #555;
+      cursor: grab;
+      user-select: none;
+    }
 
-#quote {
-    display: block;
-    margin-bottom: -10px;
-    margin-top: -30px;
-    font-size: 10px;
-    font-family :  'MS Gothic', 'ＭＳ ゴシック' , 'MS ゴシック' , Msgothic, 'ヒラギノ明朝 ProN', sans-serif;
-}
+    .title-bar-buttons {
+      display: flex;
+      gap: 6px;
+    }
 
-#text {
-    opacity: 0;
-    transition: opacity 0.5s;
-    display: inline; /* Add this line */
-    position: static; /* Add this line to remove absolute positioning */
-}
+    .button {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: #444;
+      border: 1px solid #222;
+      box-shadow:
+        inset 0 1px 1px #666,
+        0 1px 0 #111;
+      transition: background-color 0.2s ease;
+    }
+    .button:hover {
+      background-color: #777;
+    }
 
-#text.show {
-    opacity: 1;
-}
+    .window-body {
+      padding: 20px 25px;
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      gap: 20px;
+      color: #ddd;
+      font-family: 'MS Gothic', monospace;
+      user-select: text;
+    }
 
-.text-container {
-    display: inline-block; /* Make the container an inline-block element */
-    width: 55px; /* Set a fixed width for the container */
-    text-align: left; /* Align the text to the left */
+    .left-column, .right-column {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .left-column img, .right-column img {
+      width: 100%;
+      border-radius: 4px;
+      border: 1px solid #444;
+      box-shadow: inset 0 0 4px #000;
+      object-fit: cover;
+    }
+
+    .middle-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .middle-column h2 {
+      margin-bottom: 12px;
+      color: #eee;
+      font-size: 20px;
+      text-shadow: 1px 1px 1px #000;
+    }
+
+    .middle-column h3 {
+      margin-bottom: 5px;
+      color: #eee;
+      font-size: 15px;
+      text-shadow: 1px 1px 1px #000;
+    }
+
+    .middle-column p {
+      margin-bottom: 10px;
+      font-size: 14px;
+      line-height: 1.3;
+      color: #ccc;
+      text-shadow: 1px 1px 1px #111;
+    }
+
+    /* Fade animation on content switch */
+    .fade {
+      animation: fadeSwitch 0.4s ease-in-out;
+    }
+    @keyframes fadeSwitch {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+.right-column img {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertical centering */
+  align-items: center;     /* horizontal centering */
+  gap: 8px;
+  height: 100%; /* ensure it fills its grid cell */
+  border: none;
+  outline: none;
 }
