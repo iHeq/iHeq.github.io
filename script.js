@@ -17,6 +17,8 @@
     <h2>feeling.limited</h2>
     <p>My name is Nikolaj, online I go by the alias of "ui". I've been in the Hypixel (duels) community since around 2019 and have achieved multiple leaderboard positions. On the other hand, since summer 2024, I've been captivated by visual novels. Not only by their writing and imagery, but also by their technical aspects. As such, I've been making tools for niche VNs and am now working on my first translation project.</p>
     <p><strong>Current Projects:</strong><br>Translating <a href="https://vndb.org/v18986">いくものへの子守唄</a><br>RE'ing random VNs <br>Writing my Matura paper</p>
+    <p><strong>Friends and me</p>
+    <a href="https://feeling.limited/" target="_blank"><img src="img/button.gif"></a>
   </div>
 <div class="right-column" style="display: flex; flex-direction: column; gap: 8px; align-items: center; justify-content: center;">
   <a href="https://oguser.com/hayami" target="_blank" style="display: flex; align-items: center; gap: 6px; text-decoration: none; color: white;">
